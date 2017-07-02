@@ -1,0 +1,45 @@
+<view wx:if="{{borrow_book_now}}">
+  <view class="container">
+    个人信息
+    <view class="usr_info">{{usr_name}}</view>
+    <view class="usr_info">{{usr_phonenumber}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title shift_right">请选择取书日期</view>
+    <view class="divider">
+    </view>
+    <picker mode="date" value="{{now_date}}" start="{{start_date}}" end="{{end_date}}" bindchange="bindDateChange">
+      <view class="picker shift_right ">
+        当前选择: <span class="importa_span">{{now_date}}</span>
+        <image src="../../source/arrow_right.png" class="arrow"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="section">
+    <view class="section__title shift_right">请选择取书时间</view>
+    <view class="divider">
+    </view>
+    <picker mode="time" value="{{now_time}}" start="{{start_time}}" end="{{end_time}}" bindchange="bindTimeChange">
+      <view class="picker shift_right">
+        当前选择: <span class="importa_span">{{now_time}}</span>
+        <image src="../../source/arrow_right.png" class="arrow"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="section shift_bottom">
+    <view class="book_info_title ">图书信息</view>
+    <block wx:for="{{book}}">
+      <view class="book shift_right">{{item}}</view>
+      <view class="divider"></view>
+    </block>
+  </view>
+  <view class="settle">
+    <view class="settle_container">
+    </view>
+    <form report-submit="true" bindsubmit="pay_order">
+      <button class="settle_bt" formType="submit">支付订单
+      </button>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<!--pages/usr_info_con/usr_info_con.wxml-->
+
+
+<form bindsubmit="formSubmit">
+  <view class="container">
+    <view class="underline">
+      <label for="phone_input">手机号码</label>
+      <input placeholder="请输入手机号" id="phone_input" class="mobile_input" name="phonenumber" bindinput="input" value="{{phonenumber}}" />
+      <view class="ver_code" catchtap="get_code">{{code}}</view>
+    </view>
+    <view class="underline">
+      <label for="code_input">验证码</label>
+      <input placeholder="请输入验证码" id="code_input" class="mobile_input" name="code" bindinput="input" />
+    </view>
+    <view class="wrong" wx:if="{{show_wrong}}">
+      <image src="../../source/wrong.png" class="icon" />请输入正确的手机号和验证码</view>
+    <button formType="submit" class="btn">绑定</button>
+  </view>
+</form>

@@ -1,0 +1,44 @@
+<view class="shadow_line"></view>
+
+<view class="show_all_book" bindtap="can_del">
+  <block wx:for="{{book}}">
+    <view class="container {{item.animate}}" style="background-color:{{item.color}};" data-isbn="{{item.isbn}}" catchtap="navorToBook">
+      <view class="radio_container" data-index="{{index}}" catchtap="change_radio">
+        <radio checked="{{item.checked}}" class="radio" data-index="{{index}}" color="#b97248"catchtap="change_radio" />
+      </view>
+      <image src="{{item.image}}" class="book_image" data-isbn="{{item.isbn}}"></image>
+      <view class="container_child" data-isbn="{{item.isbn}}">
+        <view class="text book_name nowrap" data-isbn="{{item.isbn}}">{{item.title}}
+        </view>
+        <view class="text nowrap " data-isbn="{{item.isbn}}">{{item.author}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">{{item.publisher}}</view>
+        <view class="coll nowrap" data-isbn="{{item.isbn}}">馆藏{{item.store}}本</view>
+        <view class="del" catchtap="del" data-index="{{index}}" wx:if="{{!item.show_del}}">...</view>
+        <view class="bg" style="background-color:{{item.color}};" wx:if="{{item.show_del}}"><view animation="{{item.animatedata}}"  class="del_cof" catchtap="del_cof" data-index="{{index}}">删除</view></view>
+        <!--<view class="price_container">
+        <image hidden="{{item.rm_disable}}" src="../../source/remove.png" data-index="{{index}}" catchtap="book_remo" class="image {{item.rm_bt}}"></image>
+        <image hidden="{{!item.rm_disable}}" src="../../source/remove2.png" data-index="{{index}}" class="image {{item.rm_bt}}"></image>
+        <view class="divider"></view>
+        <view class="book_num">{{item.num}}</view>
+        <view class="divider"></view>
+        <image src="../../source/add2.png" data-index="{{index}}" catchtap="book_add" class="image"></image>
+      </view>-->
+      </view>
+    </view>
+    <view class="divider_col"></view>
+  </block>
+</view>
+<!--<view class="wrong_container" wx:if="{{show_wrong}}" catchtap="can_wrong">
+<view class="wrong">
+{{book[wrong_index].title}}的馆藏为0本
+</view>
+</view>-->
+<view class="settle" wx:if="{{book_self.have_book}}">
+  <view class="settle_container">
+    <radio catchtap="all_chose" class="radio" color="#f9957c" checked="{{book_self.all_chose}}" />
+    <view>全选</view>
+  </view>
+  <view class="settle_bt" catchtap="borrow_book">
+    <view class="settle_text"catchtap="borrow_book">确认预定</view>
+  </view>
+</view>

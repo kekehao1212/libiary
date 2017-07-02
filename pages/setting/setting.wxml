@@ -1,0 +1,10 @@
+<view class="head">推荐</view>
+<view class="container">
+  <view class="body_view"> 是否开启个性化推荐
+    <switch checked="{{usr_reco}}" class="swh" bindchange="switchChange" color="#6acddb" />
+  </view>
+  <view class="divider"></view>
+  <picker range="{{reco_fre}}" value="{{usr_fre_index}}" bindchange="fre_change">
+  <view class="reco_fre body_view">个性化推荐频率<span class="toright">{{reco_fre[usr_fre_index]}}</span></view>
+  </picker>
+</view>

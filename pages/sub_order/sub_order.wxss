@@ -1,0 +1,98 @@
+/* pages/sub_order/sub_order.wxss */
+
+.container {
+  text-align: center;
+  background-color: #6bcdda;
+  padding: 20rpx;
+  font-size: 18px;
+}
+
+.usr_info {
+  color: white;
+  padding-top: 20rpx;
+  font-size: 16px;
+}
+
+.section {
+  margin: 20rpx;
+  background-color: #fff;
+  padding: 10rpx;
+}
+
+.picker {
+  color: black;
+  position: relative;
+}
+
+.shift_right {
+  padding-left: 20rpx;
+  line-height: 80rpx;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+.arrow {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  right: 0;
+  position: absolute;
+  top: 20rpx;
+}
+
+.book_info_title {
+  text-align: center;
+  padding: 20rpx;
+  color: #f9957d;
+}
+
+.book_info {
+}
+
+.importa_span {
+  color: #f9957d;
+}
+
+.shift_bottom {
+  min-height: 500rpx;
+}
+
+.settle {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  background-color: #4e4e4e;
+  color: white;
+}
+
+.settle_container {
+  padding-left: 26rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+}
+
+.text_settle {
+  text-align: center;
+  margin-left: 15rpx;
+}
+
+.settle_bt {
+  height: 100rpx;
+  position: absolute;
+  background-color: #6acddb;
+  top: 0;
+  right: 0;
+  color: white;
+}
+
+.settle_text {
+  align-self: center;
+  margin: 10rpx;
+}

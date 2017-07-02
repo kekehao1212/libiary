@@ -1,0 +1,17 @@
+/* pages/act_success/act_success.wxss */
+.container{
+  padding:60rpx;
+  text-align: center;
+}
+.icon_container{
+  padding:50rpx;
+  font-size:20px;
+}
+.btn{
+  background-color:#6BCDDA;
+  margin-top: 50rpx;
+}
+.title{
+  margin-bottom: 30rpx;
+  font-size:20px;
+}

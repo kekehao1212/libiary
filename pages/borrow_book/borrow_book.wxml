@@ -1,0 +1,38 @@
+<view wx:if="{{!show_svg}}">
+<view class="container">
+个人信息
+  <view class="usr_info">{{usr_name}}</view>
+  <view class="usr_info">{{usr_phonenumber}}</view>
+</view>
+<view class="section shift_bottom">
+  <view class="book_info_title " wx:if="{{book.length==0?fales:true}}">图书信息</view>
+  <block wx:for="{{book}}">
+    <view class="book shift_">{{item.name}}<image src="../../source/cancel.png" class="cancel_img" catchtap="delete_book" data-index="{{index}}"></image></view>
+    <view class="divider"></view>
+  </block>
+  <view class="add_book" catchtap="add_book"><image src="../../source/add.png" class="img"></image>添加图书</view>
+  <view class="tips">温馨提示：每次最多可借两本书</view>
+</view>
+<view class="settle">
+  <view class="settle_container">
+  </view>
+    <form report-submit="true" bindsubmit="pay_order">
+      <button class="settle_bt" formType="submit">立即借阅
+      </button>
+    </form>
+</view>
+</view>
+<view wx:if="{{show_svg}}">
+  <view class="header">
+    请向图书管理员出示该借书二维码
+  </view>
+  <view class="section shift_bottom">
+  <view class="qr_container">
+  <image src="{{png_src}}" class="qr_img"></image>
+  </view>
+  <block wx:for="{{book}}">
+    <view class="book shift_">{{item.name}}</view>
+    <view class="divider"></view>
+  </block>
+  </view>
+</view>

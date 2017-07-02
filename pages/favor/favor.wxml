@@ -1,0 +1,17 @@
+<view class="shadow_line"></view>
+<view class="book_container" catchtap="can_del">
+  <block wx:for="{{book}}" wx:key="{{item.index}}">
+    <view class="book_container_form {{item.animate}}" catchtap="skip" data-isbn="{{item.isbn}}">
+      <image src="{{item.image}}" class="book_image" data-isbn="{{item.isbn}}"></image>
+      <view class="book_info_container" data-isbn="{{item.isbn}}" >
+        <view class="book_title nowrap" data-isbn="{{item.isbn}}">{{item.title}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">作者:{{item.author}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">出版社:{{item.publisher}}</view>
+        <view class="coll nowrap" data-isbn="{{item.isbn}}">馆藏:{{item.store}}本</view>
+    </view>
+            <view class="del" catchtap="del" wx:if="{{!item.show_del}}" data-index="{{index}}">...</view>
+                    <view wx:if="{{item.show_del}}" class="del_cof" catchtap="del_cof" data-index="{{index}}">删除</view>
+      </view>
+    <view class="cut_line"></view>
+  </block>
+</view>

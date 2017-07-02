@@ -1,0 +1,73 @@
+<view class="shadow_line"></view>
+<view class="toggle_container">
+  <view class=" order_left {{order_style}}" catchtap="change_to_order">预定中</view>
+  <view class=" order_right {{borrow_style}}" catchtap="change_to_borrow">借阅中</view>
+</view>
+<view class="divider"></view>
+
+
+<view class="book_container" wx:if="{{!return_book}}" hidden="{{show_order}}">
+  <block wx:for="{{book}}" wx:key="{{item.index}}">
+    <view class="book_container_form" catchtap="skip" data-isbn="{{item.isbn}}">
+      <image src="{{item.image}}" class="book_image" data-isbn="{{item.isbn}}"></image>
+      <view class="book_info_container" data-isbn="{{item.isbn}}">
+        <view class="book_title nowrap" data-isbn="{{item.isbn}}">{{item.title}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">作者:{{item.author}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">出版社:{{item.publisher}}</view>
+        <view class="coll nowrap" data-isbn="{{item.isbn}}">归还期限:{{item.deadline}}</view>
+        <view class="option_container">
+          <view class="option" catchtap="take_book" data-index="{{index}}" style="background-color:{{item.style}}">
+            <image src="../../source/take.png" class="option_png" ></image>
+            {{item.text}}
+          </view>
+          <view class="option_return" catchtap="return_book" data-index="{{index}}">
+          <image src="../../source/return.png" class="option_png"></image>
+            归还
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cut_line"></view>
+  </block>
+</view>
+
+
+<view class="book_container" wx:if="{{!return_book}}" hidden="{{!show_order}}">
+  <block wx:for="{{book}}" wx:key="{{item.index}}">
+    <view class="book_container_form" catchtap="skip" data-isbn="{{item.isbn}}">
+      <image src="{{item.image}}" class="book_image" data-isbn="{{item.isbn}}"></image>
+      <view class="book_info_container" data-isbn="{{item.isbn}}">
+        <view class="book_title nowrap" data-isbn="{{item.isbn}}">{{item.title}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">作者:{{item.author}}</view>
+        <view class="text nowrap" data-isbn="{{item.isbn}}">出版社:{{item.publisher}}</view>
+        <view class="coll nowrap" data-isbn="{{item.isbn}}">归还期限:{{item.deadline}}</view>
+        <view class="option_container">
+          <view class="option" catchtap="take_book" data-index="{{index}}" style="background-color:{{item.style}}">
+            <image src="../../source/take.png" class="option_png" ></image>
+            {{item.text}}
+          </view>
+          <view class="option_return" catchtap="return_book" data-index="{{index}}">
+          <image src="../../source/return.png" class="option_png"></image>
+            归还
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cut_line"></view>
+  </block>
+</view>
+
+
+
+
+<view wx:if="{{return_book}}">
+  <view class="header">
+    请向图书管理员出示该二维码
+  </view>
+  <view class="section shift_bottom">
+    <view class="qr_container">
+      <image src="{{image_qr}}" class="qr_img"></image>
+    </view>
+  </view>
+  <button class="btn" catchtap="action_return">返回</button>
+</view>

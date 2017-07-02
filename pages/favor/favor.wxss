@@ -1,0 +1,57 @@
+@import "../logs/logs.wxss";
+
+.del {
+color:#9e9e9e;
+position:absolute;
+width:100rpx;
+height:80rpx;
+right:0;
+bottom:0;
+text-align:center;
+line-height:80rpx;
+
+}
+
+.del_cof {
+color:#fff;
+background-color:#fe3c2e;
+position:absolute;
+height:200rpx;
+top:30rpx;
+right:-100rpx;
+line-height:200rpx;
+text-align:center;
+width:100rpx;
+animation:opop 0.2s;
+animation-fill-mode:forwards;
+
+}
+.animate{
+  animation: move 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode:forwards;
+}
+.animate_back{
+  animation: move1 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode:forwards;
+}
+@keyframes opop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes move {
+  from{right:0rpx;
+}
+  to{right:110rpx;}
+}
+@keyframes move1 {
+  from{right:110rpx;
+}
+  to{right:0rpx;}
+}
+

@@ -1,0 +1,205 @@
+.shadow_line {
+width:750rpx;
+height:2px;
+box-shadow:0px 2px #e3dedd;
+background-color:#6acddb;
+}
+
+.container_baba {
+  display: flex;
+  margin-left: 35rpx;
+  margin-right: 35rpx;
+  flex-direction: column;
+}
+
+.book_image_info {
+  display: flex;
+  margin-top: 50rpx;
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+
+.book_info {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.book_image {
+  margin-left: 45rpx;
+  height: 290rpx;
+  width: 200rpx;
+  box-shadow: 2px 2px #e3dedd;
+  flex-shrink: 0;
+}
+
+.book_name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.book_other_info {
+  margin-top: 20rpx;
+  font-size: 14px;
+  color: #a1a1a1;
+}
+
+.book_impor_info {
+  font-size: 14px;
+  color: #ef5350;
+  margin-top: 20rpx;
+}
+
+.cut_line {
+  width: 750rpx;
+  background-color: #ddd;
+  height: 1px;
+  align-self: center;
+}
+
+.book_intro {
+  margin-top: 5rpx;
+  background-color: #f6f9f8;
+}
+
+.container_papa {
+  background-color: #f6f9f8;
+  width: 100%;
+  margin-top: 1px;
+  padding-bottom:50rpx;
+}
+
+.intro {
+  margin-top: 20rpx;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.launch_text {
+font-size:14px;
+line-height:25px;
+width:680rpx;
+word-break:break-all;
+
+}
+
+.fold_text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 25px;
+  width: 680rpx;
+  word-break:break-all;
+
+}
+
+.arrow {
+  height: 15rpx;
+  width: 35rpx;
+}
+
+.arrow_container {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_container {
+  display: flex;
+  margin: 20rpx 15rpx 30rpx;
+  justify-content: center;
+}
+
+.favor_container {
+  width: 350rpx;
+  margin: 0 15rpx;
+  display: flex;
+  justify-content: center;
+  border-radius: 10rpx;
+  background-color:#6acddb;
+  height: 70rpx;
+  align-items: center;
+}
+
+.favor_image {
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.favor_button {
+  font-size: 16px;
+  margin-left: 10rpx;
+}
+
+.type {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom:30rpx;
+
+}
+
+.type_container {
+margin:10rpx 10rpx;
+background-color:#6acddb;
+border-radius:10rpx;
+color:white;
+font-size:14px;
+padding:15rpx 20rpx;
+
+}
+.put_book{
+  background:#ababab;
+  position: fixed;
+  color: white;
+  animation: put_book 1.25s; 
+  width: 100%;
+  animation-fill-mode: forwards;
+  text-align: center;
+  padding: 10rpx;
+  font-size:16px;
+  animation-direction:alternate;
+  animation-iteration-count:2;
+}
+@keyframes put_book
+{
+  0%{height: 0rpx;}
+  25%{height: 40rpx;}
+  50%{height: 40rpx;}
+  75%{height: 40rpx;}
+  100%{height: 40rpx;}
+}
+.relat_image{
+  width: 100%;
+  height: 100%;
+}
+.relat_container{ 
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+
+}
+.relat_title{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  width: 100%;
+  font-size:14px;
+  text-align:center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.relat_image_container{
+  width: 150rpx;
+  height: 225rpx;
+  margin-right:20rpx;
+  margin-left:20rpx;
+  margin-bottom:100rpx;
+}
+.text_container{
+  width: 100%;
+}

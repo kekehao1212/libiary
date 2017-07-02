@@ -1,0 +1,49 @@
+/* pages/borrow_book/borrow_book.wxss */
+@import '../sub_order/sub_order.wxss';
+
+.add_book {
+  text-align: center;
+  padding-top: 15px;
+  color: #f9957c;
+  font-size: 18px;
+}
+
+.tips {
+  text-align: center;
+  font-size: 14px;
+  color: #757575;
+  margin-top: 50rpx;
+}
+
+.img {
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 10rpx;
+}
+
+.cancel_img {
+  height: 40rpx;
+  width: 40rpx;
+  float: right;
+  vertical-align: bottom;
+}
+
+.shift_ {
+  padding-left: 20rpx;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+.header{
+  font-size:20px;
+  text-align: center;
+  margin: 50rpx;
+}
+.qr_img{
+  width: 500rpx;
+  height: 500rpx
+}
+.qr_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

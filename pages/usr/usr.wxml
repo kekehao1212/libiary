@@ -1,0 +1,50 @@
+<view class="avatar">
+  <view class="image_container" style="left:{{left}}px; top:{{top}}px"catchtouchmove="move"  catchtouchend="end" catchtouchstart="start">
+    <image src="{{userInfo.avatarUrl}}" class="ava_image" catchtouchmove="move"  catchtouchend="end" catchtouchstart="start"></image>
+        <!--<block wx:for="{{image}}">
+  <image src="{{userInfo.avatarUrl}}" hidden="{{!show_other}}" class="ava_image_op" style="left:{{item.left}}px; top:{{item.top}}px"></image>
+  </block>-->
+  </view>
+</view>
+<view class="option_container">
+  <navigator class="option" url="../favor/favor">
+    <image src="../../source/favor_ico.png" class="icon"></image>
+    <span class="option_text">我的收藏</span>
+    <image src="../../source/arrow_right.png" class="arrow"></image>
+  </navigator>
+  <view class="divider"></view>
+  <navigator url="../borrow/borrow" class="option">
+    <image src="../../source/borrow_book.png" class="icon"></image>
+    <span class="option_text">我的借阅</span>
+    <image src="../../source/arrow_right.png" class="arrow"></image>
+  </navigator>
+</view>
+<view class="option_container">
+  <navigator class="option" url="../usr_info_con/usr_info_con?name={{usr_name}}&id={{usr_id}}">
+    <image src="../../source/face1.png" class="icon"></image>
+    <span class="option_text">身份认证</span>
+    <view class="text">{{id_con}}    <image src="../../source/arrow_right.png" class="arrow"></image></view>
+
+  </navigator>
+  <view class="divider"></view>
+  <navigator class="option" url="../usr_mobile/usr_mobile?phone={{usr_phone}}">
+    <image src="../../source/phone_con.png" class="icon"></image>
+    <span class="option_text">手机绑定</span>
+     <view class="text">{{phone_con}}  
+    <image src="../../source/arrow_right.png" class="arrow"></image>
+    </view>
+  </navigator>
+</view>
+<view class="option_container">
+  <navigator class="option" url="../setting/setting">
+    <image src="../../source/setting.png" class="icon"></image>
+    <span class="option_text">设置</span>
+    <image src="../../source/arrow_right.png" class="arrow"></image>
+  </navigator>
+  <view class="divider"></view>
+  <navigator class="option" url="../about/about">
+    <image src="../../source/dashboard.png" class="icon"></image>
+    <span class="option_text">关于</span>
+    <image src="../../source/arrow_right.png" class="arrow"></image>
+  </navigator>
+</view>

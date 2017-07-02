@@ -1,0 +1,119 @@
+<view class="shadow_line"></view>
+<view class="put_book" wx:if="{{put_book_shelf}}">已加入借书栏
+</view>
+<view class="container_baba">
+  <view class="book_image_info">
+    <view class="book_info">
+      <view class="book_name">
+        {{book.title}}
+      </view>
+      <view class="book_other_info">
+        {{book.author}} 著
+      </view>
+      <view class="book_other_info">
+        {{book.publisher}}
+      </view>
+      <view class="book_other_info">
+        {{book.pubdate}}
+      </view>
+      <view class="book_impor_info">
+        馆藏:{{book.store}}本
+      </view>
+    </view>
+    <image src="{{book.image}}" class="book_image"></image>
+  </view>
+</view>
+<view class="button_container">
+  <view class="favor_container" catchtap="favor_behvor">
+    <image src="{{favor_image}}" class="favor_image"></image>
+    <view class="favor_button">
+      {{isfavor}}
+    </view>
+  </view>
+  <view class="favor_container" catchtap="put_book">
+    <!--<image src="{{borrow_image}}" class="favor_image"></image>-->
+    <view class="favor_button">
+      放入预定栏
+    </view>
+  </view>
+  <view class="favor_container" catchtap="borrow_book">
+    <image src="{{borrow_image}}" class="favor_image"></image>
+    <view class="favor_button">
+      立即预定
+    </view>
+  </view>
+</view>
+<view class="cut_line"></view>
+<view class="container_papa">
+  <view class="container_baba">
+    <view class="brief_intro_container">
+      <view class="intro">
+        简介
+      </view>
+      <view class="text_container {{text_style[0].text}}" catchtap="text_style_cha" data-index="0">
+        <block wx:for="{{book.summary}}">
+        <text class="" catchtap="text_style_cha" data-index="0">　　{{item}}
+        </text>
+        </block>
+      </view>
+      <view class="arrow_container" catchtap="text_style_cha" data-index="0">
+        <image src="{{text_style[0].image}}" class="arrow"></image>
+      </view>
+    </view>
+    <view class="cut_line"></view>
+    <view class="brief_intro_container">
+      <view class="intro">
+        目录
+      </view>
+      <view class="text_container" catchtap="text_style_cha" data-index="1">
+        <text class="{{text_style[1].text}}" catchtap="text_style_cha" data-index="1">{{book.catalog}}
+        </text>
+      </view>
+      <view class="arrow_container" catchtap="text_style_cha" data-index="1">
+        <image src="{{text_style[1].image}}" class="arrow"></image>
+      </view>
+    </view>
+    <view class="cut_line"></view>
+    <view class="brief_intro_container">
+      <view class="intro">
+        书评
+      </view>
+      <view class="text_container {{text_style[2].text}}" catchtap="text_style_cha" data-index="2">
+      <block wx:for="{{book.review}}">
+        <text class="" catchtap="text_style_cha" data-index="2">　　{{item}}
+        </text>
+        </block>
+      </view>
+      <view class="arrow_container" catchtap="text_style_cha" data-index="2">
+        <image src="{{text_style[2].image}}" class="arrow"></image>
+      </view>
+    </view>
+    <view class="cut_line"></view>
+    <view class="brief_intro_container">
+      <view class="intro">
+        标签
+      </view>
+      <view class="type">
+        <block wx:for="{{book.tags}}">
+          <view class="type_container" data-tag="{{item.title}}" catchtap="search_tag" data-type="hot">
+            {{item.title}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="cut_line"></view>
+    <view class="brief_intro_container">
+      <view class="intro">
+        相关推荐
+      </view>
+      <view class="relat_container">
+        <block wx:for="{{book.relat}}">
+          <view class="relat_image_container" data-isbn="{{item.isbn}}" catchtap="change_book">
+            <image src="{{item.imageUrl}}" data-isbn="{{item.isbn}}" catchtap="change_book" class="relat_image" />
+            <view class="relat_title" data-isbn="{{item.isbn}}" catchtap="change_book">{{item.title}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

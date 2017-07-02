@@ -1,0 +1,32 @@
+<!--pages/usr_info_con/usr_info_con.wxml-->
+<form bindsubmit="formSubmit" wx:if="{{do_con}}">
+  <view class="container">
+    <view class="underline">
+      <label for="name_input">姓名</label>
+      <input placeholder="请输入姓名" id="name_input" class="input" name="name" bindinput="input" />
+    </view>
+    <view class="underline">
+      <label for="name_input">身份证</label>
+      <input placeholder="请输入身份证号" id="name_input" class="input" name="id" bindinput="input" />
+    </view>
+    <view class="wrong" wx:if="{{show_wrong}}">
+      <image src="../../source/wrong.png" class="icon" />请输入正确的身份证信息</view>
+    <button formType="submit" class="btn">认证</button>
+    <view class="prompt">温馨提示：认证成功后，身份信息不可改变</view>
+  </view>
+</form>
+<view class="container" wx:if="{{!do_con}}">
+  <view class="underline">
+    <label for="name_input">姓名</label>
+    <input id="name_input" class="input" disabled="true" value="{{usr_name}}" />
+  </view>
+  <view class="underline">
+    <label for="name_input">身份证</label>
+    <input id="name_input" class="input" disabled="true" value="{{usr_id}}" />
+  </view>
+  <view class="icon_container">
+    <view class="icon_background"></view>
+    <icon type="success" size="93" color="#6BCDDA"></icon>
+  </view>
+  <view class="prompt">温馨提示：认证成功后，身份信息不可改变</view>
+</view>

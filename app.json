@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/showBook/showBook",
+    "pages/usr/usr",
+    "pages/book_shelf/book_shelf",
+    "pages/favor/favor",
+    "pages/usr_info_con/usr_info_con",
+    "pages/usr_mobile/usr_mobile",
+    "pages/sub_order/sub_order",
+    "pages/classify/classify",
+    "pages/act_success/act_success",
+    "pages/setting/setting",
+    "pages/about/about",
+    "pages/borrow/borrow",
+    "pages/borrow_book/borrow_book",
+    "pages/first_mobile/first_mobile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "图书馆",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh" : "ture"
+  },
+  "tabBar": {
+    "selectedColor": "#6BCDDA",
+    "backgroundColor": "white",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "source/home.png",
+        "selectedIconPath": "source/home_chosen.png"
+      },
+      {
+        "pagePath": "pages/book_shelf/book_shelf",
+        "text": "预定栏",
+        "iconPath": "source/lib.png",
+        "selectedIconPath": "source/lib_chosen.png"
+      },
+      {
+        "pagePath": "pages/usr/usr",
+        "text": "我的",
+        "iconPath": "source/user.png",
+        "selectedIconPath": "source/user_chosen.png"
+      }
+    ]
+  }
+}

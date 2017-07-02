@@ -1,0 +1,70 @@
+/* pages/usr_info_con/usr_info_con.wxss */
+
+.container {
+  padding: 160rpx 70rpx;
+}
+
+.underline {
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  border-color: #e5e5e5;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 80rpx;
+  position: relative;
+  padding-top: 20rpx;
+}
+
+.input {
+  position: fixed;
+  left: 260rpx;
+}
+
+.btn {
+  height: 100rpx;
+  width: 100%;
+  background-color: #6acddb;
+  font-size: 40rpx;
+  color: #3d3c21;
+  text-align: center;
+  line-height: 100rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+.wrong {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+
+.prompt {
+  margin-top: 50rpx;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50rpx;
+  color: #616161;
+}
+
+.icon {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: text-top;
+  margin-right: 6rpx;
+}
+
+.icon_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_background {
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 80px;
+  z-index: -1;
+}

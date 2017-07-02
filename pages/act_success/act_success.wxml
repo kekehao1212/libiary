@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="icon_container">
+    <icon type="success" size="93" color="#6BCDDA"></icon>
+  </view>
+  <view class="">
+    <view class="title">操作成功</view>
+  </view>
+  <view class="btn_container" catchtap="back">
+    <button class="btn">确定</button>
+  </view>
+</view>

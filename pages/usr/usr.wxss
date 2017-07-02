@@ -1,0 +1,71 @@
+/* pages/usr/usr.wxss */
+
+.avatar {
+  background-color: #6acddb;
+  /*background-color: #ffff00;*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+  position:relative;
+}
+
+.ava_image {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+}
+.image_container{
+  position: relative;
+}
+.ava_image_op{
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  position: absolute;
+  opacity: 0.5;
+}
+
+.option_container {
+  background-color: #fff;
+  margin-bottom: 25rpx;
+}
+
+.divider {
+  height: 3rpx;
+  width: 650rpx;
+  float: right;
+  /*background: #dfebb7;*/
+  background: #e7e7e7;
+}
+.text{
+  float:right;
+  font-size:16px;
+  color:#616161;
+}
+.option {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  padding-left: 40rpx;
+}
+
+.icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  vertical-align:bottom;
+
+}
+
+.option_text {
+  font-size: 16px;
+}
+
+.arrow {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: text-top;
+  float: right;
+  margin-right: 30rpx;
+}

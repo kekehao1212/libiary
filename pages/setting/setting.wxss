@@ -1,0 +1,35 @@
+/* pages/setting/setting.wxss */
+
+.container {
+  background-color: white;
+}
+
+.reco_fre {
+
+}
+
+.body_view {
+  padding: 25rpx;
+  height: 30px;
+  line-height:30px;
+}
+
+.divider {
+  background-color: #eeeeee;
+  height: 1px;
+  width: 710rpx;
+  margin-left: 20rpx;
+}
+.swh{
+  float: right;
+  vertical-align:text-top;
+}
+.head{
+  margin-top: 40rpx;
+  color:#757575;
+  margin-left: 25rpx;
+  margin-bottom: 18rpx;  
+}
+.toright{
+  float: right;
+}

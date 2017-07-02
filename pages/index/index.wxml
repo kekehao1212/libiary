@@ -1,0 +1,68 @@
+<!--index.wxml-->
+<view class="search">
+  <image class="search" src="../../source/bg2.png" mode="scaleToFill"></image>
+  <image src="../../source/title.png" class="title_png"></image>
+  <view class="text" catchtouchstart="focus">
+    <image src="../../source/search.png" class="search_image"></image>
+    <input class="input" placeholder="搜索书籍或作者" placeholder-class="placeholder" disabled="true" />
+  </view>
+</view>
+<view class="container">
+  <view class="container_child">
+    <image src="../../source/my_book.png" class="option_image" catchtap="my_borrow"></image>
+    <view class="option_font" catchtap="my_borrow">我的借阅</view>
+  </view>
+  <view class="container_child" catchtap="scan_book">
+    <image src="../../source/scan.png" class="option_image" catchtap="scan_book"></image>
+    <view class="option_font" catchtap="scan_book">扫码借书</view>
+  </view>
+  <view class="container_child">
+    <image src="../../source/temp.png" class="option_image" catchtap="classify_book"></image>
+    <view class="option_font" catchtap="classify_book">图书分类</view>
+  </view>
+</view>
+<view class="cut_line">
+</view>
+<view class="hot_recom">
+  <view class="hot_text">
+    热门推荐
+  </view>
+  <swiper class="swiper" indicator-dots='true' circular='true'indicator-color='#6acddb'indicator-active-color ='#b97248'>
+    <block wx:for="{{popul_book}}">
+      <swiper-item>
+        <view class="relat_container">
+          <block wx:for="{{item}}">
+            <view class="relat_image_container" catchtap="navto" data-isbn="{{item.isbn}}">
+              <image src="{{item.image}}" class="relat_image" />
+              <view class="relat_title">{{item.title}}</view>
+            </view>
+          </block>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="cut_line">
+</view>
+<view class="hot_recom" hidden="{{!show_recom}}">
+  <view class="hot_text">
+    为您推荐
+  </view>
+   <swiper class="swiper" indicator-dots='true' circular='true'indicator-color='#6acddb'indicator-active-color ='#b97248'>
+    <block wx:for="{{recom_book}}">
+      <swiper-item>
+        <view class="relat_container">
+          <block wx:for="{{item}}">
+            <view class="relat_image_container"catchtap="navto" data-isbn="{{item.isbn}}">
+              <image src="{{item.image}}" class="relat_image" />
+              <view class="relat_title">{{item.title}}</view>
+            </view>
+          </block>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--<view class="hint">
+  <image class="search" src="../../source/hint.png"></image>
+</view>-->

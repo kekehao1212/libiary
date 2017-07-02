@@ -1,0 +1,44 @@
+<view class="shadow_line"></view>
+<view class="justify_center">
+  <view class="search_container search_input" catchtouchstart="focus">
+    <image src="../../source/search.png" class="search_image"></image>
+    搜索书籍或作者
+  </view>
+</view>
+<view class="divider">
+</view>
+<view class="container" style="height: {{system_height}}px">
+  <view class="classify">
+  <view class="disable" hidden="{{!show_second}}" catchtap="change_to_first"></view>
+    <view class="classify_level {{ show_chinese ? 'chosen_level' : ''}}" bindtap="change_to_chinese">中文图书</view>
+    <view class="divider"></view>
+    <view class="classify_level {{ !show_chinese ? \"chosen_level\" : ''}}" bindtap="change_to_foreign">外文图书</view>
+    <view class="divider"></view>
+  </view>
+  <scroll-view class="level" scroll-y="true" hidden="{{show_second||!show_chinese}}" style="height: {{system_height}}px">
+    <block wx:for="{{chinese_level}}">
+      <view class="first_level" data-index="{{index}}" catchtap="change_to_second">{{item.first_level}}</view>
+      <view class="divider"></view>
+    </block>
+  </scroll-view>
+  <scroll-view class="level"  scroll-y="true" hidden="{{show_second||show_chinese}}" style="height: {{system_height}}px">
+    <block wx:for="{{foreign_level}}">
+      <view class="first_level" data-index="{{index}}" catchtap="change_to_second">{{item.first_level[0]}}<view class="foreign_level_divider" data-index="{{index}}" catchtap="change_to_second">{{item.first_level[1]}}</view>
+      </view>
+      <view class="divider"></view>
+    </block>
+  </scroll-view>
+  <scroll-view class="second_level_container" scroll-y="true" wx:if="{{show_second&&show_chinese}}" style="height: {{system_height}}px">
+    <block wx:for="{{chinese_level[index].second_level}}">
+      <view class="first_level" data-index="{{index}}" data-type="chinese" catchtap="search_by_type">{{item}}</view>
+      <view class="divider"></view>
+    </block>
+  </scroll-view>
+  <scroll-view class="second_level_container" scroll-y="true"wx:if="{{show_second&&!show_chinese}}" style="height: {{system_height}}px">
+    <block wx:for="{{foreign_level[index].second_level}}">
+      <view class="first_level" data-index="{{index}}" data-type="foreign" catchtap="search_by_type">{{item[0]}}
+      <view class="foreign_level_divider" data-index="{{index}}" data-type="foreign" catchtap="search_by_type">{{item[1]}}</view></view>
+      <view class="divider"></view>
+    </block>
+  </scroll-view>
+</view>
