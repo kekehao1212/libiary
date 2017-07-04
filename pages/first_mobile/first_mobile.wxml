@@ -1,6 +1,6 @@
 <!--pages/usr_info_con/usr_info_con.wxml-->
 
-
+<view class="shadow_line"></view>
 <form bindsubmit="formSubmit">
   <view class="container">
     <view class="underline">

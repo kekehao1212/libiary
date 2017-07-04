@@ -66,6 +66,10 @@ Page({
         'content-type': 'text/html'
       },
       success: function (res) {
+
+        console.log(res)
+
+
         var temp = res.data
         temp.store = store
         temp.summary = temp.summary.split(String.fromCharCode(10))
@@ -87,6 +91,7 @@ Page({
         'content-type': 'text/html'
       },
       success: function (res) {
+        console.log(res)
         if (res.data.annotations.length == 0) {
           that.check()
           return

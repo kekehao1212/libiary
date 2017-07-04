@@ -22,12 +22,12 @@ Page({
     
     app.borrow_book.forEach(function (value, index, array) {
       if (value.takeline != undefined) {
-        value.text = "待取"
+        value.text = "预定保留"
         value.style = "#f9957c"
       }
       else {
-        value.text = "已取"
-        value.style = "#6acddb"
+        value.text = "暂无馆藏"
+        value.style = "#b97248"
       }
     })
     this.setData({
@@ -43,6 +43,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  
   take_book: function (e) {
     var index = e.target.dataset.index
     if (this.data.book[index].takeline == undefined)
@@ -55,14 +56,7 @@ Page({
   },
   return_book: function (e) {
     console.log("fuck")
-    var that = this
-    var index = e.target.dataset.index
-    console.log(this.data.book)
-    if (this.data.book[index].takeline){
-      console.log("out")
-      return
-    }
-     
+    var that = this    
   
     if (app.me){
       console.log("fuck you")

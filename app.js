@@ -9,6 +9,8 @@ App({
 
     this.request_user_info()
 
+    this.request_borrow_book()
+
 
     // wx.getStorage({
     //   key: 'favor_book',
@@ -18,13 +20,12 @@ App({
     //   }
     // })
 
-    wx.getStorage({
-      key: 'borrow_book',
-      success: function (res) {
-        if (res.data != undefined && res.data != '')
-          that.borrow_book = res.data
+    wx.getSystemInfo({
+      success: function(res) {
+        that.system_height = res.windowHeight
       }
     })
+
 
     wx.getStorage({
       key: 'history',
@@ -34,7 +35,7 @@ App({
       }
     })
 
-
+    
     wx.getStorage({
       key: 'book_ishelf',
       success: function (res) {
@@ -76,6 +77,27 @@ App({
     })
   },
 
+  request_borrow_book:function(){
+    var that = this
+    wx.getStorage({
+      key: 'borrow_book',
+      success: function (res) {
+        if (res.data != undefined && res.data != '')
+          that.borrow_book = res.data
+      }
+    })
+    
+    wx.request({
+      url: `${this.url}order`,
+      method:'GET',
+      header: {
+        WX_SESSION_ID: this.sessionId
+      },
+      success:function(res){
+        console.log(res)
+      }
+    })
+  },
 
   set_session_id: function (sessionId) {
     this.sessionId = sessionId

@@ -1,3 +1,4 @@
+<view class="shadow_line"></view>
 <view class="container">
   <view class="icon_container">
     <icon type="success" size="93" color="#6BCDDA"></icon>

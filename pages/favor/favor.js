@@ -2,7 +2,8 @@
 var app = getApp()
 Page({
   data: {
-    book: []
+    book: [],
+    empty:false
   },
   temp_f: -1,
   del: function (e) {
@@ -79,6 +80,11 @@ Page({
       },
       success: function (res) {
         console.log(res)
+        if(res.data.books.length == 0){
+          that.setData({
+            empty:true
+          })
+        }
         that.setData({
           "book": res.data.books
         })
