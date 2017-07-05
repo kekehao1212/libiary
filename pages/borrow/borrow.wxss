@@ -5,58 +5,127 @@
 .option_container {
   align-self: center;
   display: flex;
-  padding-top: 10rpx;
-  justify-content: space-around;
+  padding-top:30rpx;
+  justify-content: flex-end;
 }
 
 .option {
-  text-align: center;
-  border: 1px solid #eeeeee;
-  border-radius: 6px;
-  height: 50rpx;
-  line-height: 50rpx;
-  width: 210rpx;
-  color:#f5f5f5;
-}
-.option_return{
-  text-align: center;
-  border: 1px solid #bdbdbd;
-  border-radius: 6px;
-  height: 50rpx;
-  line-height: 50rpx;
-  width: 210rpx;
-  background-color:#66bb6a;
-  color:#f5f5f5;
+text-align:center;
+border:1px solid #eee;
+border-radius:6px;
+height:60rpx;
+line-height:60rpx;
+width:300rpx;
+color:#f5f5f5;
+margin-right:20rpx;
+
 }
 
-.book_container_form {
-  display: flex;
-  padding-top: 20rpx;
-  padding-bottom: 10rpx;
-  position: relative;
+.option_return {
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 100%;
+  background-color: #66bb6a;
+  color: #f5f5f5;
+  position: fixed;
+  bottom: 0;
+  font-size: 20px;
+  border-radius:0;
+
+}
+
+
+.padding_bottom{
+  margin-bottom: 100rpx;
 }
 
 .option_png {
-  width: 32rpx;
-  height: 34rpx;
-  vertical-align:text-top;
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: text-top;
 }
-.header{
-  font-size:20px;
+
+.header {
+  font-size: 20px;
   text-align: center;
   margin: 50rpx;
 }
-.qr_img{
+
+.qr_img {
   width: 500rpx;
-  height: 500rpx
+  height: 500rpx;
 }
-.qr_container{
+
+.qr_container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.btn{
-  background-color:#6BCDDA;
+
+.btn {
+  background-color: #6bcdda;
   margin-top: 50rpx;
-  width:500rpx;
+  width: 500rpx;
+}
+
+.toggle_container {
+  display: flex;
+  padding-top: 15rpx;
+  padding-bottom: 4rpx;
+}
+
+.borrow_check {
+  color: white;
+  border-radius: 35px 10px 5px 5px;
+  background: #6acddb;
+}
+
+.order_check {
+  color: white;
+  border-radius: 10px 35px 5px 5px;
+  background: #6acddb;
+}
+
+.order_left {
+  text-align: center;
+  width: 200rpx;
+  margin-left: 10rpx;
+  height: 80rpx;
+  line-height: 90rpx;
+  margin-right: 20rpx;
+  flex-grow: 1;
+}
+
+.order_right {
+  margin-right: 10rpx;
+  margin-left: 20rpx;
+  flex-grow: 1;
+  height: 80rpx;
+  line-height: 90rpx;
+  text-align: center;
+  width: 200rpx;
+}
+
+.divider {
+  height: 3rpx;
+  width: 100%;
+  background: #ddd;
+  left: 200rpx;
+}
+.book_container_form_order {
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  position: relative;
+}
+.empty{
+  margin-top:100rpx;
+text-align:center;
+
+}
+.empty_image{
+  width:470rpx;
+height:470rpx;
+
 }

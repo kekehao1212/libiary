@@ -7,36 +7,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    book: [],
+    order_book: [],
+    borrow_book: [],
+    
     return_book: false,
-    image_qr: null
+    image_qr: null,
+    show_order:true,
+    order_style:"order_check",
+    borrow_style:"",
+    empty:{
+      borrow:false,
+      order:false
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onShow: function () {
-    wx.onSocketMessage(function(res){
-      console.log(`message:${res.data}`);
-    })
-
-    wx.onSocketError((res) => {
-      console.log(`error:${res.data}`);
-    })
-
+    
     app.borrow_book.forEach(function (value, index, array) {
       if (value.takeline != undefined) {
-        value.text = "待取"
+        value.text = "预定保留"
         value.style = "#f9957c"
       }
       else {
-        value.text = "已取"
-        value.style = "#6acddb"
+        value.text = "暂无馆藏"
+        value.style = "#b97248"
       }
     })
     this.setData({
       book: app.borrow_book
     })
+    if(app.borrow_book.lenght == 0){
+      this.setData({
+        "empty.borrow" :true
+      })
+    }
   },
   skip: function (e) {
     var isbn = e.target.dataset.isbn
@@ -47,6 +54,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  
   take_book: function (e) {
     var index = e.target.dataset.index
     if (this.data.book[index].takeline == undefined)
@@ -59,14 +67,7 @@ Page({
   },
   return_book: function (e) {
     console.log("fuck")
-    var that = this
-    var index = e.target.dataset.index
-    console.log(this.data.book)
-    if (this.data.book[index].takeline){
-      console.log("out")
-      return
-    }
-     
+    var that = this    
   
     if (app.me){
       console.log("fuck you")
@@ -145,6 +146,8 @@ Page({
       });
     })
   },
+
+
   return_finish: function (index) {
     var that = this
     this.setData({
@@ -169,6 +172,23 @@ Page({
       image_qr: null
     })
   },
+
+  change_to_order:function(e){
+    this.setData({
+      show_order:true,
+      order_style:"order_check",
+      borrow_style:""
+    })
+  },
+
+  change_to_borrow:function(e){
+    this.setData({
+      show_order: false,
+      order_style: "",
+      borrow_style:"borrow_check"
+    })
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */

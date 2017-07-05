@@ -2,7 +2,8 @@
 var app = getApp()
 Page({
   data: {
-    book: []
+    book: [],
+    empty:false
   },
   temp_f: -1,
   del: function (e) {
@@ -22,11 +23,25 @@ Page({
       var index = e.target.dataset.index
       var data_temp = this.data
       data_temp.book[index].show_del = false
+      
+      var isbn = data_temp.book[index].isbn
+
       data_temp.book.splice(index,1)
       this.setData(data_temp)
       this.temp_f = -1
-      app.favor_book.splice(index, 1)
-      wx.setStorageSync("favor_book", app.favor_book)
+      app.favor_book = data_temp.book
+
+      wx.request({
+        url: `${app.url}collection/${isbn}`,
+        method: 'DELETE',
+        header:{
+          WX_SESSION_ID: app.sessionId
+        },
+        success:function(res){
+          console.log("刪除收藏"+res)
+        }
+      })
+
     }
     else
       this.can_del()
@@ -55,37 +70,36 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-      this.setData({
-        "book":app.favor_book
-      })
+  request_favor: function () {
+    var that = this
+    wx.request({
+      url: `${app.url}collection`,
+      method: "GET",
+      header: {
+        WX_SESSION_ID: app.sessionId
+      },
+      success: function (res) {
+        console.log(res)
+        if(res.data.books.length == 0){
+          that.setData({
+            empty:true
+          })
+        }
+        that.setData({
+          "book": res.data.books
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var favor_book = wx.getStorageSync('favor_book')
-    if (favor_book == '') {
-      wx.setStorage({
-        key: 'favor_book',
-        data: []
-      })
-    }
-    else {
-      this.setData({
-        "book": favor_book
-      })
-    }
+    this.request_favor()
   },
+  onReady:function(){
 
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

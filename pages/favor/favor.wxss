@@ -54,4 +54,12 @@ animation-fill-mode:forwards;
 }
   to{right:0rpx;}
 }
-
+.empty_container{
+  width: 100%;
+  text-align:center;
+  margin-top:200rpx;
+}
+.empty{
+  width:400rpx;
+  height: 400rpx;
+}

@@ -1,3 +1,4 @@
+<view class="shadow_line"></view>
 <view class="container">
   <image src="../../source/scanning.png" class="image_scan" bindtap="scan_book"></image>
   <view class="container_child">

@@ -12,7 +12,7 @@ Page({
     usr_id:null
   },
   onLoad: function (options) {
-    if(options.name == "null"){
+    if(!options.name || options.name == ''){
       this.setData({
         do_con : true
       })
@@ -57,6 +57,9 @@ Page({
       "name": name
     },
     success: function (res) {
+      console.log(res)
+      app.usr_phone_id.RICN = id
+      app.usr_phone_id.name= name
       wx.navigateTo({
         url: '../act_success/act_success',
       })
