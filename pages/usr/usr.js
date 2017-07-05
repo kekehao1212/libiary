@@ -45,23 +45,30 @@ Page({
         })
       }
     })
-    console.log(app.usr_phone_id)
-    this.setData({
-      usr_name: app.usr_phone_id.name,
-      usr_phone: app.usr_phone_id.phoneNumber,
-      usr_id: app.usr_phone_id.RICN
+    wx.request({
+      url: `${app.url}user`,
+      header: {
+        WX_SESSION_ID: app.sessionId
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          usr_name:res.data.name,
+          usr_phone:res.data.phoneNumber,
+          usr_id:res.data.RICN
+        })
+        if (res.data.RICN == null){
+          that.setData({
+            id_con:'未认证'
+          })
+        }
+        if (res.data.phoneNumber == null) {
+          that.setData({
+            phone_con: '未绑定'
+          })
+        }
+      }
     })
-            
-    if (this.data.usr_id == null) {
-      that.setData({
-        id_con: '未认证'
-      })
-    }
-    if (this.data.usr_phone == null) {
-      that.setData({
-        phone_con: '未绑定'
-      })
-    }
   },
   move: function (e) {
     this.setData({

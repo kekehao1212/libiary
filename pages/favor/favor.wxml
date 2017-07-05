@@ -1,9 +1,5 @@
-
 <view class="shadow_line"></view>
-<view class="empty_container" wx:if="{{empty}}">
-  <image src="../../source/empty_favor.png" class="empty"></image>
-</view>
-<view class="book_container" catchtap="can_del" wx:if="{{!empty}}">
+<view class="book_container" catchtap="can_del">
   <block wx:for="{{book}}" wx:key="{{item.index}}">
     <view class="book_container_form {{item.animate}}" catchtap="skip" data-isbn="{{item.isbn}}">
       <image src="{{item.image}}" class="book_image" data-isbn="{{item.isbn}}"></image>

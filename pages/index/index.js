@@ -88,44 +88,34 @@ Page({
     ]
   },
   url: 'http://123.206.84.238:3000/w/login',
-
-  register : function(){
-    wx.navigateTo({
-      url: '../first_mobile/first_mobile',
-    })
-  },
-
   code_login: function () {
-    var that = this
     wx.login({
       success: function (res) {
-        app.code = res.code
         wx.request({
-          url: `${app.url}login`,
+          url: 'http://123.206.84.238:3000/w/login',
           method: 'POST',
           header: {
             WX_CODE: res.code
           },
           success: function (res) {
+            console.log(res)
             if (res.statusCode == 200) {
-              app.set_session_id(res.data.sessionId)
-              app.set_open_id(res.data.openId)
-            }
-            else {
-              if (res.data.error == 'ERR_USER_NOT_REGISTERED') {
-                that.register()
-              }
+              wx.setStorage({
+                key: 'sessionId',
+                data: res.data.sessionId,
+              })
+              app.sessionId = res.data.sessionId
+              app.openId = res.data.openId
             }
           }
         })
       }
     })
   },
-
   session_id_login: function () {
     var that = this
     wx.request({
-      url: `${app.url}login`,
+      url: 'http://123.206.84.238:3000/w/login',
       method: 'POST',
       header: {
         WX_SESSION_ID: app.sessionId
@@ -135,7 +125,7 @@ Page({
         if (res.statusCode != 200) {
           that.code_login()
         }
-        app.set_open_id(res.data.openId)
+        app.openId = res.data.openId
       }
     })
   },
@@ -144,14 +134,13 @@ Page({
     this.setData({
       show_recom: app.usr_setting.usr_reco
     })
-
-    if (app.sessionId == ''){
+    app.sessionId = wx.getStorageSync('sessionId')
+    if (app.sessionId == undefined)
       this.code_login()
-    }
     else {
       this.session_id_login()
     }
-
+    app.getUsrInfo()
   },
   //事件处理函数
   focus: function (e) {

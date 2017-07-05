@@ -1,4 +1,3 @@
-<view class="shadow_line"></view>
 <view class="head">推荐</view>
 <view class="container">
   <view class="body_view"> 是否开启个性化推荐

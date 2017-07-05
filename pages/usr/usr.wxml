@@ -1,4 +1,3 @@
-
 <view class="avatar">
   <view class="image_container" style="left:{{left}}px; top:{{top}}px"catchtouchmove="move"  catchtouchend="end" catchtouchstart="start">
     <image src="{{userInfo.avatarUrl}}" class="ava_image" catchtouchmove="move"  catchtouchend="end" catchtouchstart="start"></image>

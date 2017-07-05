@@ -21,17 +21,25 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    if (app.usr_phone_id.name != null) {
-      that.setData({
-        usr_name: res.data.name
-      })
-    }
-    if (app.usr_phone_id.phoneNumber != null) {
-      that.setData({
-        usr_phonenumber: res.data.phoneNumber
-      })
-    }
-},
+    wx.request({
+      url: `${app.url}user`,
+      header: {
+        WX_SESSION_ID: app.sessionId
+      },
+      success: function (res) {
+        if(res.data.name != null){
+          that.setData({
+            usr_name: res.data.name
+          })
+        }
+        if (res.data.phoneNumber != null){
+          that.setData({
+            usr_phonenumber: res.data.phoneNumber
+          })
+        }
+      }
+    })
+  },
   add_book: function () {
     var that = this
     if (this.data.book.length == 2) {
@@ -81,12 +89,6 @@ Page({
         showCancel: false,
         title: '未完成身份认证',
         content: '完成身份认证才可以借书',
-        success: function (res) {
-          if (res.confirm)
-            wx.navigateTo({
-              url: '../usr_info_con/usr_info_con',
-            })
-        }
       })
       return
     }
@@ -94,7 +96,7 @@ Page({
       wx.showModal({
         showCancel: false,
         title: '未完成手机号绑定',
-        content: '完成手机号绑定才可以借书'
+        content: '完成手机号绑定才可以借书',
       })
       return
     }
@@ -105,7 +107,7 @@ Page({
     this.data.book.forEach((value, index, arr) => {
       list.push(value.id)
     })
-    if (list.length == 0) {
+    if(list.length == 0){
       wx.showModal({
         content: '借书栏为空，无法借书',
         showCancel: false,

@@ -144,7 +144,7 @@ min-height:1100rpx;
 .book_container_form {
   display: flex;
   padding-top: 20rpx;
-  padding-bottom: 30rpx;
+  padding-bottom: 20rpx;
   position:relative;
 }
 

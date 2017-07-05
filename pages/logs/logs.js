@@ -68,7 +68,6 @@ Page({
 
         },
         success: function (res) {
-          console.log(res)
           if (res.data.books == undefined) {
             that.setData({
               'isSearching': false,

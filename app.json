@@ -14,8 +14,7 @@
     "pages/setting/setting",
     "pages/about/about",
     "pages/borrow/borrow",
-    "pages/borrow_book/borrow_book",
-    "pages/first_mobile/first_mobile"
+    "pages/borrow_book/borrow_book"
   ],
   "window": {
     "backgroundTextStyle": "light",

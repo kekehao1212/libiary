@@ -9,25 +9,29 @@ Page({
   data: {
     book: [],
     return_book: false,
-    image_qr: null,
-    show_order:true,
-    order_style:"order_check",
-    borrow_style:""
+    image_qr: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onShow: function () {
-    
+    wx.onSocketMessage(function(res){
+      console.log(`message:${res.data}`);
+    })
+
+    wx.onSocketError((res) => {
+      console.log(`error:${res.data}`);
+    })
+
     app.borrow_book.forEach(function (value, index, array) {
       if (value.takeline != undefined) {
-        value.text = "预定保留"
+        value.text = "待取"
         value.style = "#f9957c"
       }
       else {
-        value.text = "暂无馆藏"
-        value.style = "#b97248"
+        value.text = "已取"
+        value.style = "#6acddb"
       }
     })
     this.setData({
@@ -43,7 +47,6 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  
   take_book: function (e) {
     var index = e.target.dataset.index
     if (this.data.book[index].takeline == undefined)
@@ -56,7 +59,14 @@ Page({
   },
   return_book: function (e) {
     console.log("fuck")
-    var that = this    
+    var that = this
+    var index = e.target.dataset.index
+    console.log(this.data.book)
+    if (this.data.book[index].takeline){
+      console.log("out")
+      return
+    }
+     
   
     if (app.me){
       console.log("fuck you")
@@ -159,22 +169,6 @@ Page({
       image_qr: null
     })
   },
-  change_to_order:function(e){
-    this.setData({
-      show_order:true,
-      order_style:"order_check",
-      borrow_style:""
-    })
-  },
-
-  change_to_borrow:function(e){
-    this.setData({
-      show_order: false,
-      order_style: "",
-      borrow_style:"borrow_check"
-    })
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
