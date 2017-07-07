@@ -25,11 +25,15 @@
   vertical-align:text-top;
 }
 .head{
-  margin-top: 40rpx;
-  color:#757575;
-  margin-left: 25rpx;
-  margin-bottom: 18rpx;  
+  padding-top:40rpx;
+color:#757575;
+margin-left:25rpx;
+padding-bottom:18rpx;
 }
 .toright{
   float: right;
+}
+.background{
+  background-color:#f6f9f8;
+  height: 100vh;
 }

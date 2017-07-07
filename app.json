@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/search/search",
     "pages/showBook/showBook",
     "pages/usr/usr",
     "pages/book_shelf/book_shelf",
@@ -22,7 +22,6 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "图书馆",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#ffffff",
     "enablePullDownRefresh" : "ture"
   },
   "tabBar": {

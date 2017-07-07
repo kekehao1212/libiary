@@ -1,7 +1,7 @@
 
 <view class="shadow_line"></view>
-<view class="empty_container" wx:if="{{empty}}">
-  <image src="../../source/empty_favor.png" class="empty"></image>
+<view class="empty_container_favor" wx:if="{{empty}}">
+  <image src="../../source/empty_favor.png" class="empty_favor"></image>
 </view>
 <view class="book_container" catchtap="can_del" wx:if="{{!empty}}">
   <block wx:for="{{book}}" wx:key="{{item.index}}">

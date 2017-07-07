@@ -156,7 +156,7 @@ Page({
   //事件处理函数
   focus: function (e) {
     wx.navigateTo({
-      url: '../logs/logs',
+      url: '../search/search',
     })
   },
   scan_book: function () {

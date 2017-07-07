@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   position: relative;
+  background-color: #eeeef4;
+  height: 10vh;
 }
 
 .container_child {
@@ -76,13 +78,14 @@
   color: #a1a1a1;
 }
 
-.nowrap{
+.nowrap {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 500rpx;
-  padding-right:30rpx;
+  padding-right: 30rpx;
 }
+
 .hot_container {
   display: flex;
   flex-wrap: wrap;
@@ -91,7 +94,6 @@
 
 .hot_containerchild {
   margin: 15rpx 16rpx;
-  background-color: #fff;
   border-radius: 10rpx;
   color: #878787;
   font-size: 14px;
@@ -118,13 +120,12 @@
 }
 
 .book_container {
-display:flex;
-flex-direction:column;
-padding-top:15rpx;
-padding-left:30rpx;
-padding-bottom:15rpx;
-min-height:1100rpx;
-
+  display: flex;
+  flex-direction: column;
+  padding-top: 15rpx;
+  padding-left: 30rpx;
+  padding-bottom: 15rpx;
+  min-height: 990rpx;
 }
 
 /*.coll {
@@ -145,7 +146,7 @@ min-height:1100rpx;
   display: flex;
   padding-top: 20rpx;
   padding-bottom: 30rpx;
-  position:relative;
+  position: relative;
 }
 
 .book_image {
@@ -166,25 +167,59 @@ min-height:1100rpx;
   left: 200rpx;
   align-self: flex-end;
 }
-.tips{
-  background:#ababab;
+
+.tips {
+  background: #ababab;
   position: fixed;
   color: white;
-  animation: put_book 1.25s; 
+  animation: put_book 1.25s;
   width: 100%;
   animation-fill-mode: forwards;
   text-align: center;
   padding: 10rpx;
-  font-size:16px;
-  animation-direction:alternate;
-  animation-iteration-count:2;
-  top:0;
+  font-size: 16px;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+  top: 0;
 }
-@keyframes put_book
-{
-  0%{height: 0rpx;}
-  25%{height: 40rpx;}
-  50%{height: 40rpx;}
-  75%{height: 40rpx;}
-  100%{height: 40rpx;}
+
+@keyframes put_book {
+  0% {
+    height: 0rpx;
+  }
+
+  25% {
+    height: 40rpx;
+  }
+
+  50% {
+    height: 40rpx;
+  }
+
+  75% {
+    height: 40rpx;
+  }
+
+  100% {
+    height: 40rpx;
+  }
+}
+
+.divider {
+  height: 2rpx;
+  width: 750rpx;
+  background: #ddd;
+}
+
+.empty_container {
+  width: 100%;
+  text-align: center;
+  background-color: #f5f5f5;
+  height: 90vh;
+}
+
+.empty {
+  width: 400rpx;
+  height: 370rpx;
+  margin-top: 140rpx;
 }

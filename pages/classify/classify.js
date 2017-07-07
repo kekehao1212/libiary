@@ -45,7 +45,7 @@ Page({
   },
   focus: function () {
     wx.navigateTo({
-      url: '../logs/logs',
+      url: '../search/search',
     })
   },
   change_to_first: function () {
@@ -63,7 +63,7 @@ Page({
       var key = this.data.foreign_level[this.data.index].second_level[e.target.dataset.index][0]
     }
     wx.navigateTo({
-      url: `../logs/logs?act=search&key=${key}`,
+      url: `../search/search?act=search&key=${key}`,
     })
   }
 })

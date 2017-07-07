@@ -25,54 +25,36 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  creat_borrow: function (book, takeline) {
+  creat_borrow: function (book) {
     this.title = book.title
-    this.image = book.image
     this.isbn = book.isbn
-    this.publisher = book.publisher
-    this.author = book.author
-    this.store = book.store
-    var date = new Date()
-    date.setMonth(date.getMonth() + 1)
-    this.deadline = util_time.formatTime(date)
-    this.takeline = takeline
   },
-  create_ish: function (book) {
-    this.title = book.title
-    this.image = book.image
-    this.isbn = book.isbn
-    this.publisher = book.publisher
-    this.author = book.author
-    this.store = book.store
-  },
+
   borrow_book: function () {
 
     var book_ish = []
     var borrow_book = []
     var that = this
     app.book_ishelf.forEach(function (item, index, array) {
+      console.log(item)
       if (item.checked == true)
-        borrow_book.push(new that.creat_borrow(item, that.takeline))
+        borrow_book.push(new that.creat_borrow(item))
       else
-        book_ish.push(new that.create_ish(item))
+        book_ish.push(item)
     })
     app.book_ishelf = book_ish
-    app.borrow_book.push.apply(app.borrow_book, borrow_book)//apply会将一个数组装换为一个参数接一个参数的传递给方法
-    
 
-    this.request_book(borrow_book)    
+    // app.borrow_book.push.apply(app.borrow_book, borrow_book)//apply会将一个数组装换为一个参数接一个参数的传递给方法
+    
 
     wx.setStorage({
       key: 'book_ishelf',
       data: book_ish,
     })
-    wx.setStorage({
-      key: 'borrow_book',
-      data: app.borrow_book,
-    })
-
+    
     this.get_message(borrow_book)
   },
+
 
   onLoad: function (options) {
     this.dest = options.dest
@@ -100,29 +82,14 @@ Page({
             data: the_data
           },
           success: function (a) {
+
           }
         })
       }
     })
   },
 
-  request_book:function(borrow_book){
-    borrow_book.forEach(function (item, index, array) {
-      console.log(item)
-      wx.request({
-        url: `${app.url}order`,
-        method: 'POST',
-        header: { WX_SESSION_ID: app.sessionId },
-        data: {
-          isbn: item.isbn,
-          fetchTime: item.takeline
-        },
-        success: function (res) {
-          console.log(res)
-        }
-      })
-    })
-  },
+
 
   get_data: function (borrow_book) {
     if (this.template_id == "Cm8l70uJYwEgFIqOqwAFhvHT0x0_6cooXc2OFL3N3So") {
@@ -132,7 +99,7 @@ Page({
       })
       var data = {
         "keyword1": {
-          "value": borrow_book[0].takeline,
+          "value": this.takeline,
           "color": "#173177"
         },
         "keyword2": {

@@ -7,7 +7,9 @@
 }
 
 .show_all_book {
-  padding-bottom: 700rpx;
+  background-color:#f6f9f8;
+  min-height:100vh;
+  padding-bottom:100rpx;
 }
 
 .nowrap {
@@ -61,7 +63,6 @@
   font-size: 16px;
   font-weight: bold;
   color: #000;
-  width: 300rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

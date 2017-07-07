@@ -1,4 +1,4 @@
-@import '../logs/logs.wxss';
+@import '../search/search.wxss';
 
 /* pages/borrow/borrow.wxss */
 
@@ -119,9 +119,10 @@ margin-right:20rpx;
   padding-bottom: 20rpx;
   position: relative;
 }
-.empty{
+.empty_borrow{
   margin-top:100rpx;
-text-align:center;
+  text-align:center;
+  padding-right:30rpx;
 
 }
 .empty_image{

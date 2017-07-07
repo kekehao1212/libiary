@@ -44,9 +44,27 @@ Page({
   },
   onLoad: function (options) {
     var that = this
+
+    this.isbn = options.order.split(',')
+    var temp = options.title.split(',')
+    this.setData({
+      book: temp
+    })
+    that.order_book();
+  },
+
+  onShow:function(){
+    var that = this
+    console.log(app.usr_phone_id)
     if (app.usr_phone_id.name != null) {
       that.setData({
         usr_name: app.usr_phone_id.name
+      })
+    }
+
+    if (app.usr_phone_id.RICN != null) {
+      that.setData({
+        usr_id: app.usr_phone_id.RICN
       })
     }
 
@@ -55,51 +73,56 @@ Page({
         usr_phonenumber: app.usr_phone_id.phoneNumber
       })
     }
-    
-    this.isbn = options.order.split(',')
-    var temp = options.title.split(',')
-    this.setData({
-      book: temp
-    })
-    var that = this
-    that.order_book();
   },
+
+
   pay_order: function (res) {
     var that = this
-    console.log(this.data.usr_name)
-    console.log(this.data.usr_phonenumber)
-    if (this.data.usr_name == "") {
+
+    if (this.data.usr_name == '' || this.data.usr_id == '') {
       wx.showModal({
         showCancel: false,
         title: '未完成身份认证',
         content: '完成身份认证才可以借书',
-        success: function (res){
-          if(res.confirm){
+        success: function (res) {
+          if (res.confirm) {
             wx.navigateTo({
               url: '../usr_info_con/usr_info_con',
-            })
-            that.setData({
-              usr_name: app.usr_phone_id.name
             })
           }
         }
       })
       return
     }
-    if (this.data.usr_phonenumber == "") {
-      wx.showModal({
-        showCancel: false,
-        title: '未完成手机号绑定',
-        content: '完成手机号绑定才可以借书',
-      })
-      return
-    }
+
     var dest = 'index'
     var date = this.data.now_date + ' ' + this.data.now_time
+
+    this.isbn.forEach(function(item,index,value){
+      wx.request({
+        url: `${app.url}order`,
+        method:'POST',
+        header:{
+          WX_SESSION_ID:app.sessionId
+        },
+        data:{
+          isbn:item,
+          fetchTime:date
+        },
+        success:function(res){
+          console.log(res)
+        }
+      })
+    })
+
+
     wx.navigateTo({
       url: `../act_success/act_success?dest=${dest}&date=${date}&formId=${res.detail.formId}&template_id=Cm8l70uJYwEgFIqOqwAFhvHT0x0_6cooXc2OFL3N3So`,
     })
+    
   },
+
+
   me: undefined,
   bindPickerChange: function (e) {
     this.setData({

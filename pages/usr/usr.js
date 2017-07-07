@@ -68,16 +68,6 @@ Page({
       left: e.touches[0].clientX - this.touch_start_x,
       top: e.touches[0].clientY - this.touch_start_y
     })
-    // this.now_image.unshift({ left: this.data.left, top: this.data.top })
-    // var data_temp = {}
-    // console.log(this.now_image.length)
-    // data_temp["image[" + 0 + "]"] = this.now_image[this.now_image.length * 0.75]
-    // data_temp["image[" + 1 + "]"] = this.now_image[this.now_image.length * 0.5]
-    // data_temp["image[" + 2 + "]"] = this.now_image[this.now_image.length * 0.25]
-    // data_temp["image[" + 3 + "]"] = this.now_image[this.now_image.length * 0.1]
-    // this.setData(data_temp)
-    // this.now_image.splice(this.now_image.length * 0.75,1)
-    // console.log(this.now_image.length)
   },
   end: function () {
     this.setData({

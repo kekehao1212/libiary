@@ -1,6 +1,7 @@
 var app = getApp()
 // pages/borrow/borrow.js
 import io from '../../utils/io'
+import date from '../../utils/util'
 Page({
 
   /**
@@ -9,7 +10,6 @@ Page({
   data: {
     order_book: [],
     borrow_book: [],
-    
     return_book: false,
     image_qr: null,
     show_order:true,
@@ -24,10 +24,31 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: function () {
-    
-    app.borrow_book.forEach(function (value, index, array) {
-      if (value.takeline != undefined) {
+  request_borrow_book: function () {
+    var that = this
+
+    wx.request({
+      url: `${app.url}user/ordering/all`,
+      method: 'GET',
+      header: {
+        WX_SESSION_ID: app.sessionId
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          order_book : res.data.booko,
+          borrow_book : res.data.booksp
+        })
+        that.change_style()
+      }
+    })
+  },
+
+  change_style:function(){
+    console.log(this.data)
+    var temp = this.data.order_book
+    temp.forEach(function (value, index, array) {
+      if (value.fetch_time != undefined) {
         value.text = "预定保留"
         value.style = "#f9957c"
       }
@@ -37,13 +58,22 @@ Page({
       }
     })
     this.setData({
-      book: app.borrow_book
+      order_book: temp
     })
-    if(app.borrow_book.lenght == 0){
+
+    if (this.data.order_book.length == 0) {
       this.setData({
-        "empty.borrow" :true
+        "empty.order": true
       })
     }
+    if (this.data.borrow_book.length == 0) {
+      this.setData({
+        "empty.borrow": true
+      })
+    }
+  },
+  onShow: function () {
+    this.request_borrow_book()
   },
   skip: function (e) {
     var isbn = e.target.dataset.isbn
@@ -57,14 +87,15 @@ Page({
   
   take_book: function (e) {
     var index = e.target.dataset.index
-    if (this.data.book[index].takeline == undefined)
+    if (this.data.order_book[index].fetch_time == undefined)
       return
     wx.showModal({
       title: '取书时间信息',
       showCancel: false,
-      content: `请与${this.data.book[index].takeline}前取书`,
+      content: `请于${date.formatTime(new Date(this.data.order_book[index].fetch_time))}前取书`,
     })
   },
+  
   return_book: function (e) {
     console.log("fuck")
     var that = this    
@@ -166,6 +197,7 @@ Page({
       url: '../act_success/act_success',
     })
   },
+
   action_return: function () {
     this.setData({
       return_book: false,

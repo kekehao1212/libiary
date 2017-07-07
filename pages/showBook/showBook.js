@@ -8,14 +8,15 @@ Page({
     text_style: [
       { text: 'fold_text', image: '../../source/arrow_down.png' }
       , { text: 'fold_text', image: '../../source/arrow_down.png' },
-      { text: 'fold_text', image: '../../source/arrow_down.png' },
       { text: 'fold_text', image: '../../source/arrow_down.png' }
     ],
     favor_image: '../../source/favor.png',
     isfavor: '收藏',
     borrow_image: '../../source/borrow2.png',
-    put_book_shelf: false
+    put_book_shelf: false,
+    empty: false
   },
+
   check: function () {
     if (this.data.book.summary == "") {
       this.setData({
@@ -33,6 +34,7 @@ Page({
       })
     }
   },
+
   check_favor: function (isbn) {
     var that = this
     wx.request({
@@ -52,56 +54,65 @@ Page({
     })
   },
   onLoad: function (res) {
-    if (res.store == undefined)
-      res.store = Math.floor(Math.random() * 6)
-    var store = res.store
+
     var that = this
 
     this.check_favor(res.isbn)
-
     wx.request({
-      url: `https://api.douban.com/v2/book/isbn/${res.isbn}?fields=id,title,image,isbn13,summary,tags,catalog,author,publisher,pubdate`,
+      url: `${app.url}book/${res.isbn}`,
       method: 'GET',
       header: {
-        'content-type': 'text/html'
+        WX_SESSION_ID: wx.sessionId
       },
       success: function (res) {
-
+        if (res.statusCode == 404) {
+          that.setData({
+            empty: true
+          })
+          return
+        }
         console.log(res)
 
-
         var temp = res.data
-        temp.store = store
         temp.summary = temp.summary.split(String.fromCharCode(10))
         that.setData({
           book: temp
         })
-        that.get_review(res.data.id)
-        that.get_relat(res.data.isbn13)
+        that.get_review(res.data.isbn)
+        that.get_relat(res.data.isbn)
       }
     })
   },
 
-  get_review: function (id) {
+  get_review: function (isbn) {
     var that = this
     wx.request({
-      url: `https://api.douban.com/v2/book/${id}/annotations?format=text`,
+      url: `https://api.douban.com/v2/book/isbn/${isbn}?fields=id`,
       method: 'GET',
       header: {
         'content-type': 'text/html'
       },
       success: function (res) {
-        console.log(res)
-        if (res.data.annotations.length == 0) {
-          that.check()
-          return
-        }
-        var temp = res.data.annotations[0].content
-        temp = temp.split(String.fromCharCode(10))
-        that.setData({
-          "book.review": temp
+
+        wx.request({
+          url: `https://api.douban.com/v2/book/${res.data.id}/annotations?format=text`,
+          method: 'GET',
+          header: {
+            'content-type': 'text/html'
+          },
+          success: function (res) {
+            if (res.data.annotations.length == 0) {
+              that.check()
+              return
+            }
+            var temp = res.data.annotations[0].content
+            temp = temp.split(String.fromCharCode(10))
+            that.setData({
+              "book.review": temp
+            })
+            that.check()
+          }
         })
-        that.check()
       }
     })
   },
@@ -110,16 +121,14 @@ Page({
     var that = this
     var relat_book = []
     wx.request({
-      url: `${app.url}rec-book/isbn/${isbn}`,
+      url: `${app.url}book/rec/isbn/${isbn}`,
       method: "GET",
       success: function (res) {
-        console.log(res)
-        res.data.details.forEach(function (value, index, array) {
-          if (value.imageUrl != undefined)
+        res.data.books.forEach(function (value, index, array) {
+          if (value.image != undefined)
             relat_book.push(value)
         })
         relat_book.length = relat_book.length < 9 ? relat_book.length : 9
-        console.log(relat_book)
         that.setData({
           "book.relat": relat_book
         })
@@ -127,10 +136,11 @@ Page({
     })
   },
 
+
   get_brief_book: function (book) {
     this.title = book.title
     this.image = book.image
-    this.isbn = book.isbn13
+    this.isbn = book.isbn
     this.publisher = book.publisher
     this.author = book.author
     this.store = book.store
@@ -157,6 +167,7 @@ Page({
         'put_book_shelf': false
       })
     }, 2500)
+
     app.book_ishelf.unshift(new this.get_brief_book(this.data.book))
     wx.setStorage({
       key: 'book_ishelf',
@@ -177,6 +188,7 @@ Page({
     }
     this.setData(data_temp)
   },
+
   favor_behvor: function () {
     if (this.data.isfavor == '已收藏') {
       this.setData({
@@ -184,7 +196,7 @@ Page({
         'isfavor': '收藏'
       })
       wx.request({
-        url: `${app.url}collection/${this.data.book.isbn13}`,
+        url: `${app.url}collection/${this.data.book.isbn}`,
         method: 'DELETE',
         header: {
           WX_SESSION_ID: app.sessionId
@@ -202,34 +214,31 @@ Page({
           WX_SESSION_ID: app.sessionId
         },
         data: {
-          isbn: `${this.data.book.isbn13}`
+          isbn: `${this.data.book.isbn}`
         },
         success: function (res) {
           console.log(res)
         }
       })
 
-      // app.favor_book.unshift(new this.get_brief_book(this.data.book))
-      // wx.setStorage({
-      //   key: 'favor_book',
-      //   data: app.favor_book
-      // })
-
       this.setData({
         'favor_image': '../../source/favoring.png',
         'isfavor': '已收藏'
       })
     }
+
   },
   search_tag: function (e) {
     wx.redirectTo({
-      url: `../logs/logs?act=search&key=${e.target.dataset.tag}`,
+      url: `../search/search?act=search&key=${e.target.dataset.tag}`,
     })
   },
+
   change_book: function (e) {
     var isbn = e.target.dataset.isbn
     wx.navigateTo({
       url: `../showBook/showBook?isbn=${isbn}`
     })
   }
+  
 })

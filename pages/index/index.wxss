@@ -9,21 +9,22 @@
   position: absolute;
   width: 30rpx;
   height: 30rpx;
-  left: 10rpx;
-  top: 25rpx;
+  left: 220rpx;
+  top: 23rpx;
 }
 
 .swiper {
   height: 400rpx;
 }
 
-.text input {
+.text view {
+  opacity: 0.5;
+  line-height: 75rpx;
+  font-size: 16px;
   background-color: white;
-  width: 650rpx;
+  width: 90%;
   height: 75rpx;
   border-radius: 30rpx;
-  padding-left: 25px;
-  opacity: 0.4;
 }
 
 image {
@@ -32,16 +33,14 @@ image {
 
 .text {
   position: absolute;
-  height: 75rpx;
-  left: 25rpx;
   top: 250rpx;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.placeholder {
-  font-size: 30rpx;
-  color: black;
-  font-family: 微软雅黑;
-}
+
 
 .hint {
   height: 100rpx;
@@ -62,9 +61,8 @@ image {
 }
 
 .option_image {
-width:70rpx;
-height:70rpx;
-
+  width: 70rpx;
+  height: 70rpx;
   padding: 10rpx;
 }
 
@@ -118,13 +116,11 @@ height:70rpx;
   background-color: #e7e7e7;
   height: 2px;
 }
-.title_png{
-width:550rpx;
-height:130rpx;
-position:absolute;
-top:80rpx;
 
-left:110rpx;
-
-
+.title_png {
+  width: 550rpx;
+  height: 130rpx;
+  position: absolute;
+  top: 80rpx;
+  left: 110rpx;
 }

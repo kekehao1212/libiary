@@ -29,7 +29,7 @@ Page({
       data_temp.book.splice(index,1)
       this.setData(data_temp)
       this.temp_f = -1
-      app.favor_book = data_temp.book
+      
 
       wx.request({
         url: `${app.url}collection/${isbn}`,

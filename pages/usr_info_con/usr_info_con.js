@@ -12,7 +12,8 @@ Page({
     usr_id:null
   },
   onLoad: function (options) {
-    if(!options.name || options.name == ''){
+    console.log(options)
+    if (options.name == 'null' || options.id == 'null' || options.name == undefined || options.id == undefined){
       this.setData({
         do_con : true
       })

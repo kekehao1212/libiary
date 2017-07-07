@@ -1,32 +1,30 @@
- //logs.js
 var app = getApp()
 Page({
   data: {
     history: undefined,
-    hot_trend: ['嫌疑人X的献身', '上瘾', '造彩虹的人', '别来无恙', '夏洛克是我的名字', '黄狗', '霍比特人','没有你，什么都不甜蜜'],
+    hot_trend: ['嫌疑人X的献身', '上瘾', '造彩虹的人', '别来无恙', '夏洛克是我的名字', '黄狗', '霍比特人', '没有你，什么都不甜蜜'],
     inputVal: '',
-    isHistory: null,
+    isHistory: true,
     search_status: true,
     isSearching: false,
-    book:null,
-    tips:false
+    book: null,
+    tips: false,
+    empty:false
   },
-  book_num : 0,
+  book_num: 0,
   event: null,
   search_num: 0,
-  bottom_update:false,
+  bottom_update: false,
+
   onLoad: function (res) {
     this.setData({
       'history': app.history,
     })
-    if (app.history.length == 0)
+    if (app.history.length == 0) {
       this.setData({
         'isHistory': false
       })
-    else
-      this.setData({
-        'isHistory': true
-      })
+    }
     if (res.act == 'scan') {
       this.scan_book()
     }
@@ -44,7 +42,7 @@ Page({
   },
   skip: function (e) {
     wx.navigateTo({
-      url: `../showBook/showBook?isbn=${e.target.dataset.isbn}&store=${e.target.dataset.store}`
+      url: `../showBook/showBook?isbn=${e.target.dataset.isbn}`
     })
   },
   request_book: function (res) {
@@ -53,32 +51,31 @@ Page({
       var search_Val = this.data.inputVal
       if (res != undefined) {
         that.setData({
-          inputVal : res
+          inputVal: res
         })
         search_Val = res
       }
       this.search_num++;
       wx.request({
-        url: `https://api.douban.com/v2/book/search?q=${search_Val}`,
+        url: `${app.url}search`,
         method: 'GET',
         header: {
-          'content-type': 'text/html'
+          WX_SESSION_ID: app.sessionId
         },
-        data:{
-
+        data: {
+          q : search_Val
         },
         success: function (res) {
           console.log(res)
-          if (res.data.books == undefined) {
+          if (res.data.books.length == 0) {
             that.setData({
+              empty:true,
+              'book': res.data.books,
               'isSearching': false,
               "search_status": false
             })
             return
           }
-          res.data.books.forEach(function(item,index,array){
-            item.store = Math.floor(Math.random() * 6)
-          })
           that.setData({
             'book': res.data.books,
             'isSearching': false,
@@ -86,7 +83,7 @@ Page({
           })
           that.book_num = 20
         },
-        complete:function(){
+        complete: function () {
           that.search_num--
         }
       })
@@ -107,7 +104,11 @@ Page({
     }
     this.change_val(str)
   },
+
   change_val: function (str) {
+    this.setData({
+      empty:false
+    })
     var that = this
     if (str == "") {
       this.setData({
@@ -153,6 +154,7 @@ Page({
       data: [],
     })
   },
+
   search: function () {
     if (this.data.inputVal.trim() == "")
       return
@@ -160,46 +162,44 @@ Page({
     this.setData({
       'history': app.history,
       'isHistory': true,
-      'isSearching':true
+      'isSearching': true
     })
     wx.setStorage({
       key: 'history',
       data: app.history,
     })
     this.request_book()
-  }, 
-  
-  
+  },
+
+
   onReachBottom: function () {
-    if(this.bottom_update == true)
+    if (this.bottom_update == true)
       return
-    if(this.book_num == 'all'){
+    if (this.book_num == 'all') {
       this.show_tips()
       return
     }
-      
+
     this.bottom_update = true
     var that = this
     this.book_num += 20
     var search_Val = this.data.inputVal
     wx.request({
-      url: `https://api.douban.com/v2/book/search?q=${search_Val}&start=${this.book_num}`,
+      url: `${app.url}search`,
       method: 'GET',
       header: {
         'content-type': 'text/html'
       },
       data: {
-
+        q : search_Val,
+        start : this.book_num
       },
       success: function (res) {
-        if(res.data.books.length == 0){
+        if (res.data.books.length == 0) {
           that.book_num = 'all'
           that.show_tips()
           return
         }
-        res.data.books.forEach(function (item, index, array) {
-          item.store = Math.floor(Math.random() * 6)
-        })
         var new_list = []
         new_list = that.data.book.concat(res.data.books)
         that.setData({
@@ -209,16 +209,17 @@ Page({
       }
     })
   },
-  show_tips:function(){
+
+  show_tips: function () {
     var that = this
     this.setData({
-        tips:true
+      tips: true
     })
-    setTimeout(function(){
+    setTimeout(function () {
       that.setData({
-        tips:false
+        tips: false
       })
-    },2500)
+    }, 2500)
   }
 })
 

@@ -4,7 +4,8 @@
   <image src="../../source/title.png" class="title_png"></image>
   <view class="text" catchtouchstart="focus">
     <image src="../../source/search.png" class="search_image"></image>
-    <input class="input" placeholder="搜索书籍或作者" placeholder-class="placeholder" disabled="true" />
+    <view class="input">搜索书籍或作者
+    </view>
   </view>
 </view>
 <view class="container">
