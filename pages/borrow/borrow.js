@@ -36,16 +36,38 @@ Page({
       success: function (res) {
         console.log(res)
         that.setData({
-          order_book : res.data.booko,
-          borrow_book : res.data.booksp
+          order_book : res.data.books
         })
         that.change_style()
       }
     })
+
+    wx.request({
+      url:`${app.url}user/borrowing`,
+      method:'GET',
+      header:{
+        WX_SESSION_ID:app.sessionId
+      },
+      success:function(res){
+        var temp = []
+        res.data.books.forEach(function(item,index,array){
+          if (item.returned == 0)
+          temp.push(item)
+        })
+        that.setData({
+          borrow_book: temp
+        })
+        if (that.data.borrow_book.length == 0) {
+          this.setData({
+            "empty.borrow": true
+          })
+        }
+      }
+    })
+
   },
 
   change_style:function(){
-    console.log(this.data)
     var temp = this.data.order_book
     temp.forEach(function (value, index, array) {
       if (value.fetch_time != undefined) {
@@ -57,6 +79,7 @@ Page({
         value.style = "#b97248"
       }
     })
+
     this.setData({
       order_book: temp
     })
@@ -66,17 +89,13 @@ Page({
         "empty.order": true
       })
     }
-    if (this.data.borrow_book.length == 0) {
-      this.setData({
-        "empty.borrow": true
-      })
-    }
   },
   onShow: function () {
     this.request_borrow_book()
   },
   skip: function (e) {
-    var isbn = e.target.dataset.isbn
+    console.log(e)
+    var isbn = e.currentTarget.dataset.isbn
     wx.navigateTo({
       url: `../showBook/showBook?isbn=${isbn}`,
     })
@@ -133,7 +152,7 @@ Page({
 
       me.on('return', (data) => {
         console.log("all right")
-        that.return_finish(index)
+        that.return_finish()
         app.me.disconnect();
         app.me = undefined;
         // 全都完成了，二维码可以撤掉了
@@ -176,24 +195,17 @@ Page({
         body: {}
       });
     })
+
   },
 
 
-  return_finish: function (index) {
+  return_finish: function () {
     var that = this
     this.setData({
       image_qr: null,
       return_book: false
     })
-    app.borrow_book.splice(index,1)
-    if(app.borrow_book.length == 0)
-      app.borrow_book = []
-    wx.setStorage({
-      key: "borrow_book",
-      data: app.borrow_book,
-    })
-    console.log("hello")
-    wx.navigateTo({
+   wx.navigateTo({
       url: '../act_success/act_success',
     })
   },

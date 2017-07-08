@@ -196,14 +196,16 @@ Page({
           showCancel: false,
           success: function (res) {
             if (res.confirm) {
-              that.navito_sub(order,title)
               that.setData({
                 "wrong_index": false
               })
+              that.navito_sub(order,title)
             }
           }
         })
       }
+
+      that.navito_sub(order, title)
     }
     else
       this.can_del()

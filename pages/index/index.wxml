@@ -15,7 +15,7 @@
   </view>
   <view class="container_child" catchtap="scan_book">
     <image src="../../source/scan.png" class="option_image" catchtap="scan_book"></image>
-    <view class="option_font" catchtap="scan_book">扫码借书</view>
+    <view class="option_font" catchtap="scan_book">线下借书</view>
   </view>
   <view class="container_child">
     <image src="../../source/temp.png" class="option_image" catchtap="classify_book"></image>

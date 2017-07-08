@@ -134,6 +134,7 @@ Page({
         console.log(res)
         if (res.statusCode != 200) {
           that.code_login()
+          return
         }
         app.set_open_id(res.data.openId)
       }
@@ -151,7 +152,7 @@ Page({
     else {
       this.session_id_login()
     }
-
+    
   },
   //事件处理函数
   focus: function (e) {

@@ -7,7 +7,7 @@ App({
 
     this.sessionId = wx.getStorageSync('sessionId')
 
-    this.request_user_info()
+
 
 
     wx.getSystemInfo({
@@ -75,10 +75,10 @@ App({
       key: 'sessionId',
       data: sessionId
     })
-
     this.request_user_info()
   },
   set_open_id: function (openId) {
+    this.request_user_info()
     this.openId = openId
   },
 

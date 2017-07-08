@@ -11,7 +11,8 @@ Page({
   data: {
     usr_name: '',
     usr_phonenumber: "",
-    book: [{ "name": "SQL Server 2008", id: "9", isbn: "9787121276576" }, { "name": "ES6标准入门", id: "11", isbn: "9787121276576" }],
+    usr_id: '',
+    book: [{ "title": "霍比特人", id: "199", isbn: "9787121276576" }, { "title": "你自以为是的极限，只是别人的起点", id: "400", isbn: "9787121276576" }],
     show_svg: false,
     png_src: null
   },
@@ -19,19 +20,24 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     var that = this
     if (app.usr_phone_id.name != null) {
       that.setData({
-        usr_name: res.data.name
+        usr_name: app.usr_phone_id.name
       })
     }
     if (app.usr_phone_id.phoneNumber != null) {
       that.setData({
-        usr_phonenumber: res.data.phoneNumber
+        usr_phonenumber: app.usr_phone_id.phoneNumber
       })
     }
-},
+    if (app.usr_phone_id.RICN != null) {
+      this.setData({
+        usr_id: app.usr_phone_id.RICN
+      })
+    }
+  },
   add_book: function () {
     var that = this
     if (this.data.book.length == 2) {
@@ -76,28 +82,22 @@ Page({
     })
   },
   pay_order: function (res) {
-    if (this.data.usr_name == "") {
+    if (this.data.usr_name == '' || this.data.usr_id == '') {
       wx.showModal({
         showCancel: false,
         title: '未完成身份认证',
         content: '完成身份认证才可以借书',
         success: function (res) {
-          if (res.confirm)
+          if (res.confirm) {
             wx.navigateTo({
               url: '../usr_info_con/usr_info_con',
             })
+          }
         }
       })
       return
     }
-    if (this.data.usr_phonenumber == "") {
-      wx.showModal({
-        showCancel: false,
-        title: '未完成手机号绑定',
-        content: '完成手机号绑定才可以借书'
-      })
-      return
-    }
+
 
     var me = null
     var that = this
@@ -129,8 +129,6 @@ Page({
           png_src: data.qr,
           show_svg: true
         })
-        // that.borrow_finish(res.detail.formId)
-        // hua chu lai svg
       });
 
       me.on('borrow error', () => {
@@ -202,31 +200,16 @@ Page({
     var book_title = ""
     future_Date.setMonth(future_Date.getMonth() + 1)
     future_Date = getDate.formatTime(future_Date)
+
     that.data.book.forEach(function (value, index, array) {
-      wx.request({
-        url: `https://api.douban.com/v2/book/isbn/${value.isbn}?fields=title,image,author,publisher`,
-        method: 'GET',
-        header: {
-          'content-type': 'text/html'
-        },
-        success: function (res) {
-          var temp = res.data
-          temp.isbn = value.isbn
-          temp.id = value.id
-          temp.deadline = future_Date
-          book_title += temp.title + " "
-          app.borrow_book.push(temp)
-          wx.setStorage({
-            key: "borrow_book",
-            data: app.borrow_book,
-          })
-          if (index == array.length - 1) {
-            that.show_message(now_Date, future_Date, book_title, formId)
-          }
-        }
-      })
+      book_title += value.title + " "
+
+      if (index == array.length - 1) {
+        that.show_message(now_Date, future_Date, book_title, formId)
+      }
     })
   },
+  
   show_message: function (now_Date, future_Date, book_title, formId) {
     wx.request({
       url: `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx9481ac5ec5bc457f&secret=c7c03d91b150689c17e2dfa015b7cdc6`,
@@ -269,10 +252,7 @@ Page({
 
   /**
    * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
+   *
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -7,7 +7,7 @@
 <view class="section shift_bottom">
   <view class="book_info_title " wx:if="{{book.length==0?fales:true}}">图书信息</view>
   <block wx:for="{{book}}">
-    <view class="book shift_">{{item.name}}<image src="../../source/cancel.png" class="cancel_img" catchtap="delete_book" data-index="{{index}}"></image></view>
+    <view class="book shift_">{{item.title}}<image src="../../source/cancel.png" class="cancel_img" catchtap="delete_book" data-index="{{index}}"></image></view>
     <view class="divider"></view>
   </block>
   <view class="add_book" catchtap="add_book"><image src="../../source/add.png" class="img"></image>添加图书</view>
@@ -31,7 +31,7 @@
   <image src="{{png_src}}" class="qr_img"></image>
   </view>
   <block wx:for="{{book}}">
-    <view class="book shift_">{{item.name}}</view>
+    <view class="book shift_">{{item.title}}</view>
     <view class="divider"></view>
   </block>
   </view>
