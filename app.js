@@ -7,7 +7,7 @@ App({
 
     this.sessionId = wx.getStorageSync('sessionId')
 
-
+    
 
 
     wx.getSystemInfo({
@@ -61,7 +61,6 @@ App({
         WX_SESSION_ID: this.sessionId
       },
       success: function (re) {
-        console.log(re)
         that.usr_phone_id = re.data
       }
     })

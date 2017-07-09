@@ -66,7 +66,6 @@ Page({
           q : search_Val
         },
         success: function (res) {
-          console.log(res)
           if (res.data.books.length == 0) {
             that.setData({
               empty:true,

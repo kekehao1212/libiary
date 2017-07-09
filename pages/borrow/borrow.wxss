@@ -73,7 +73,6 @@ margin-right:20rpx;
 .toggle_container {
   display: flex;
   padding-top: 15rpx;
-  padding-bottom: 4rpx;
 }
 
 .borrow_check {
@@ -130,4 +129,11 @@ margin-right:20rpx;
   width:470rpx;
 height:470rpx;
 
+}
+.borrow_book_container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15rpx;
+  padding-left: 30rpx;
+  padding-bottom: 15rpx;
 }

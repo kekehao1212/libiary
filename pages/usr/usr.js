@@ -45,7 +45,6 @@ Page({
         })
       }
     })
-    console.log(app.usr_phone_id)
     this.setData({
       usr_name: app.usr_phone_id.name,
       usr_phone: app.usr_phone_id.phoneNumber,

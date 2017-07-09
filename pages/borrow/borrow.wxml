@@ -1,4 +1,4 @@
-<view class="shadow_line"></view>
+
 <view class="toggle_container">
   <view class=" order_left {{order_style}}" catchtap="change_to_order">预定中</view>
   <view class=" order_right {{borrow_style}}" catchtap="change_to_borrow">借阅中</view>
@@ -7,7 +7,7 @@
 
 
 
-<view class="book_container padding_bottom" wx:if="{{!return_book}}" hidden="{{show_order}}">
+<view class="borrow_book_container padding_bottom" wx:if="{{!return_book}}" hidden="{{show_order}}">
   <view class="empty_borrow" hidden="{{!empty.borrow}}">
     <image src="../../source/empty_borrow.png" class="empty_image"></image>
   </view>
@@ -23,7 +23,7 @@
     </view>
     <view class="cut_line"></view>
   </block>
-    <button class="option_return" catchtap="return_book">
+    <button class="option_return" catchtap="return_book" hidden="{{empty.borrow}}">
     <image src="../../source/return.png" class="option_png"></image>
     还书
   </button>
@@ -34,7 +34,7 @@
 
 
 
-<view class="book_container"  hidden="{{!show_order}}">
+<view class="borrow_book_container"  hidden="{{!show_order}}">
   <view class="empty_borrow" hidden="{{!empty.order}}">
     <image src="../../source/empty_borrow.png" class="empty_image"></image>
   </view>

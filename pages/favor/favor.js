@@ -38,7 +38,6 @@ Page({
           WX_SESSION_ID: app.sessionId
         },
         success:function(res){
-          console.log("刪除收藏"+res)
         }
       })
 
@@ -79,7 +78,6 @@ Page({
         WX_SESSION_ID: app.sessionId
       },
       success: function (res) {
-        console.log(res)
         if(res.data.books.length == 0){
           that.setData({
             empty:true

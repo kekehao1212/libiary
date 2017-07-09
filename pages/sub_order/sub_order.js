@@ -55,7 +55,6 @@ Page({
 
   onShow:function(){
     var that = this
-    console.log(app.usr_phone_id)
     if (app.usr_phone_id.name != null) {
       that.setData({
         usr_name: app.usr_phone_id.name
@@ -110,7 +109,6 @@ Page({
           fetchTime:date
         },
         success:function(res){
-          console.log(res)
         }
       })
     })

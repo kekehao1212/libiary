@@ -71,7 +71,6 @@ Page({
           })
           return
         }
-        console.log(res)
 
         var temp = res.data
         temp.summary = temp.summary.split(String.fromCharCode(10))
@@ -202,7 +201,6 @@ Page({
           WX_SESSION_ID: app.sessionId
         },
         success: function (res) {
-          console.log(res)
         }
       })
     }
@@ -217,7 +215,6 @@ Page({
           isbn: `${this.data.book.isbn}`
         },
         success: function (res) {
-          console.log(res)
         }
       })
 

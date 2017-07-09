@@ -12,7 +12,6 @@ Page({
     usr_id:null
   },
   onLoad: function (options) {
-    console.log(options)
     if (options.name == 'null' || options.id == 'null' || options.name == undefined || options.id == undefined){
       this.setData({
         do_con : true
@@ -58,7 +57,6 @@ Page({
       "name": name
     },
     success: function (res) {
-      console.log(res)
       app.usr_phone_id.RICN = id
       app.usr_phone_id.name= name
       wx.navigateTo({

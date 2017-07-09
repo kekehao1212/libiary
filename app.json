@@ -15,12 +15,12 @@
     "pages/about/about",
     "pages/borrow/borrow",
     "pages/borrow_book/borrow_book",
-    "pages/first_mobile/first_mobile"
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "图书馆",
+    "navigationBarTitleText": "赛艇图书馆",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh" : "ture"
   },
@@ -31,6 +31,12 @@
     "list": [
       {
         "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "source/home.png",
+        "selectedIconPath": "source/home_chosen.png"
+      },
+      {
+        "pagePath": "pages/register/register",
         "text": "首页",
         "iconPath": "source/home.png",
         "selectedIconPath": "source/home_chosen.png"

@@ -21,7 +21,7 @@ Page({
         "show_wrong": true
       })
       return
-    } 
+    }
     if (this.i != 0) {
       return
     }
@@ -54,7 +54,7 @@ Page({
     this.register(phonenumber)
   },
 
-  register: function (phonenumber){
+  register: function (phonenumber) {
     wx.login({
       success: function (res) {
         wx.request({

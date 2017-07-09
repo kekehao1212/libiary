@@ -65,7 +65,7 @@ Page({
     var index = e.target.dataset.index
     wx.showModal({
       title: `删除`,
-      content: `确定要删除《${that.data.book[index].name}》？`,
+      content: `确定要删除《${that.data.book[index].title}》？`,
       confirmText: "确定",
       cancelText: "取消",
       success: function (res) {
@@ -121,10 +121,8 @@ Page({
 
     var me = app.me;
     me.on('connect', () => {
-      console.log("connect")
 
       me.on('borrow qr', (data) => {
-        console.log("qr")
         that.setData({
           png_src: data.qr,
           show_svg: true
@@ -146,7 +144,6 @@ Page({
       });
 
       me.on('confirm', (data) => {
-        console.log("all right")
         app.me.disconnect();
         app.me = undefined;
         that.borrow_finish(res.detail.formId)
@@ -159,14 +156,12 @@ Page({
       })
 
       me.on('error', () => {
-        console.log("error")
         app.me.disconnect();
         app.me = undefined;
         // 出错了，提示
       });
 
       me.on('timeout', () => {
-        console.log("timeout")
         app.me.disconnect();
         app.me = undefined;
         wx.showToast({
@@ -237,7 +232,6 @@ Page({
             }
           },
           success: function (a) {
-            console.log("a")
             wx.navigateTo({
               url: '../act_success/act_success',
             })

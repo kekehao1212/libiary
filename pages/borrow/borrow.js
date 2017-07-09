@@ -34,7 +34,6 @@ Page({
         WX_SESSION_ID: app.sessionId
       },
       success: function (res) {
-        console.log(res)
         that.setData({
           order_book : res.data.books
         })
@@ -58,7 +57,7 @@ Page({
           borrow_book: temp
         })
         if (that.data.borrow_book.length == 0) {
-          this.setData({
+          that.setData({
             "empty.borrow": true
           })
         }
@@ -94,7 +93,6 @@ Page({
     this.request_borrow_book()
   },
   skip: function (e) {
-    console.log(e)
     var isbn = e.currentTarget.dataset.isbn
     wx.navigateTo({
       url: `../showBook/showBook?isbn=${isbn}`,
@@ -116,21 +114,17 @@ Page({
   },
   
   return_book: function (e) {
-    console.log("fuck")
     var that = this    
   
     if (app.me){
-      console.log("fuck you")
       app.me.disconnect();
     }
     app.me = io(app.socket_url);
 
     var me = app.me;
     me.on('connect', () => {
-      console.log("connect")
 
       me.on('return qr', (data) => {
-        console.log("qr")
         that.setData({
           image_qr: data.qr,
           return_book: true
@@ -140,7 +134,6 @@ Page({
         // 出错了，可能是不让借太多书
         // 二维码没收到，不画。
 
-        console.log('ERROR return error');
         app.me.disconnect();
         app.me = undefined;
       });
@@ -151,7 +144,6 @@ Page({
       });
 
       me.on('return', (data) => {
-        console.log("all right")
         that.return_finish()
         app.me.disconnect();
         app.me = undefined;
@@ -164,14 +156,12 @@ Page({
       })
 
       me.on('error', () => {
-        console.log("error")
         app.me.disconnect();
         app.me = undefined;
         // 出错了，提示
       });
 
       me.on('timeout', () => {
-        console.log("timeout")
         app.me.disconnect();
         app.me = undefined;
         wx.showToast({
@@ -188,7 +178,6 @@ Page({
 
 
       // 这样发起
-      console.log("emit")
       me.emit('action', {
         sessionId: app.sessionId,
         action: 'return qr',
