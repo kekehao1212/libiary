@@ -36,12 +36,6 @@
         "selectedIconPath": "source/home_chosen.png"
       },
       {
-        "pagePath": "pages/register/register",
-        "text": "首页",
-        "iconPath": "source/home.png",
-        "selectedIconPath": "source/home_chosen.png"
-      },
-      {
         "pagePath": "pages/book_shelf/book_shelf",
         "text": "预定栏",
         "iconPath": "source/lib.png",

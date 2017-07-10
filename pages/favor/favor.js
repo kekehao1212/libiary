@@ -19,6 +19,7 @@ Page({
       this.can_del()
   },
   del_cof: function (e) {
+    var that = this
     if (this.temp_f != -1) {
       var index = e.target.dataset.index
       var data_temp = this.data
@@ -38,6 +39,11 @@ Page({
           WX_SESSION_ID: app.sessionId
         },
         success:function(res){
+          if (that.data.book.length == 0) {
+            that.setData({
+              empty: true
+            })
+          }
         }
       })
 

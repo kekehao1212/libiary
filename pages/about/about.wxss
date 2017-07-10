@@ -1,1 +1,37 @@
 /* pages/about/about.wxss */
+
+.show_team {
+  display: flex;
+  margin-top: 20rpx;
+  line-height: 24px;
+}
+
+.img {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.container {
+  padding-top: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.text {
+  width: 70%;
+}
+
+.team {
+  text-align: center;
+}
+
+.more {
+  margin-top: 30rpx;
+  line-height: 24px;
+}
+
+.background {
+  background-color: #f6f9f8;
+  width: 100%;
+  height: 100vh;
+}

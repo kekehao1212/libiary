@@ -11,7 +11,7 @@ Page({
 
   register : function(){
     wx.navigateTo({
-      url: '../register /register ',
+      url: '../register/register',
     })
   },
 

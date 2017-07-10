@@ -1,13 +1,22 @@
 <view class="shadow_line"></view>
-<view class="background">
-<view class="head">推荐</view>
-<view class="container">
-  <view class="body_view"> 是否开启个性化推荐
-    <switch checked="{{usr_reco}}" class="swh" bindchange="switchChange" color="#6acddb" />
+<view class="background" hidden="{{show_tag}}">
+  <view class="head">推荐</view>
+  <view class="container">
+    <view class="body_view"> 是否开启个性化推荐
+      <switch checked="{{usr_reco}}" class="swh" bindchange="switchChange" color="#6acddb" />
+    </view>
+    <view class="divider"></view>
+    <picker range="{{reco_fre}}" value="{{usr_fre_index}}" bindchange="fre_change">
+      <view class="reco_fre body_view">个性化推荐频率<span class="toright">{{reco_fre[usr_fre_index]}}</span>
+      </view>
+    </picker>
+    <!--<view class="divider"></view>
+    <view class="body_view" catchtap="get_tag"> 喜欢的图书类型
+    </view>-->
   </view>
-  <view class="divider"></view>
-  <picker range="{{reco_fre}}" value="{{usr_fre_index}}" bindchange="fre_change">
-  <view class="reco_fre body_view">个性化推荐频率<span class="toright">{{reco_fre[usr_fre_index]}}</span></view>
-  </picker>
 </view>
-</view>
+<!--<view class="tags_container">
+   <block wx:for="{{tags}}">
+    <view class="tags">{{item}}</view>
+   </block>
+</view>-->

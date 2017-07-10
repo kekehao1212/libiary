@@ -16,3 +16,10 @@ top:10rpx;
   left: 260rpx;
   width:240rpx;
 }
+.register_container{
+  text-align:center;
+  padding-bottom:60rpx;
+}
+.register{
+  font-size:20px;
+}

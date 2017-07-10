@@ -67,7 +67,6 @@ Page({
             "phoneNumber": phonenumber,
           },
           success: function (res) {
-            console.log(res)
             app.usr_phone_id.phoneNumber = phonenumber
             app.set_session_id(res.data.sessionId)
             app.set_open_id(res.data.openId)

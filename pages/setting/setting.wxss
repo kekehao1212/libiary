@@ -37,3 +37,11 @@ padding-bottom:18rpx;
   background-color:#f6f9f8;
   height: 100vh;
 }
+.tags_container{
+  display: flex;
+  flex-wrap:wrap;
+  margin: 50rpx;
+}
+.tags{
+  margin: 10rpx;
+}

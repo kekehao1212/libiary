@@ -48,10 +48,16 @@ Page({
         WX_SESSION_ID:app.sessionId
       },
       success:function(res){
+        console.log(res)
         var temp = []
         res.data.books.forEach(function(item,index,array){
           if (item.returned == 0)
           temp.push(item)
+        })
+        temp.forEach(function(item,index,array){
+          var dat = new Date(item.borrow_time)
+          dat.setMonth(dat.getMonth() + 1)
+          item.borrow_time = date.formatTime(dat)
         })
         that.setData({
           borrow_book: temp
@@ -207,6 +213,8 @@ Page({
   },
 
   change_to_order:function(e){
+    if(this.data.return_book == true)
+      return
     this.setData({
       show_order:true,
       order_style:"order_check",

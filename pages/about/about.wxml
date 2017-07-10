@@ -1,33 +1,6 @@
-<form bindsubmit="formSubmit" bindreset="formReset" report-submit = "true">
-  <view class="section section_gap">
-    <view class="section__title">switch</view>
-    <switch name="switch"/>
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">slider</view>
-    <slider name="slider" show-value ></slider>
-  </view>
-
-  <view class="section">
-    <view class="section__title">input</view>
-    <input name="input" placeholder="please input here" />
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">radio</view>
-    <radio-group name="radio-group">
-      <label><radio value="radio1"/>radio1</label>
-      <label><radio value="radio2"/>radio2</label>
-    </radio-group>
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">checkbox</view>
-    <checkbox-group name="checkbox">
-      <label><checkbox value="checkbox1"/>checkbox1</label>
-      <label><checkbox value="checkbox2"/>checkbox2</label>
-    </checkbox-group>
-  </view>
-  <view class="btn-area">
-    <button formType="submit">Submit</button>
-    <button formType="reset">Reset</button>
-  </view>
-</form>
+<view class="background"><view class="container">
+  <view class="team">团队简介</view>
+  <view class="show_team"><view class="text">　　我们是来自山东科技大学的“一颗赛艇、两颗赛艇、山科赛艇”队。队名取自英文单词“Exciting” 发音直译“一颗赛艇” 。同时我们的学校——山科的发音和“三颗”又很相似。顾最终定名为“一颗赛艇、两颗赛艇、山科赛艇”。</view><image src="../../source/saiting.png" class="img"></image>
+</view>
+<view class="more">　　采用这个队名首先想要表达我们团队的一个共识——软件开发是一件“令人激动的事”。虽然开发过程中充满曲折，但在过程中我们学到了新知识、新技术，每一个小的成功，都会令我们激动不已。其次，赛艇又是一种激烈的竞技类项目，不畏湍流，力争上游，是赛艇运动永恒的主题。而我们在队名中采用“赛艇”两字，就是想表明我们那一颗不断进取，积极向上的心</view>
+</view></view>

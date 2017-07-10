@@ -18,7 +18,7 @@
         <view class="book_title nowrap" data-isbn="{{item.isbn}}">{{item.title}}</view>
         <view class="text nowrap" data-isbn="{{item.isbn}}">作者:{{item.author}}</view>
         <view class="text nowrap" data-isbn="{{item.isbn}}">出版社:{{item.publisher}}</view>
-        <view class="coll nowrap" data-isbn="{{item.isbn}}">归还期限:{{item.deadline}}</view>
+        <view class="coll nowrap" data-isbn="{{item.isbn}}">归还期限:{{item.borrow_time}}</view>
       </view>
     </view>
     <view class="cut_line"></view>

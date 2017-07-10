@@ -57,7 +57,7 @@
 
 .icon {
   margin-right: 20rpx;
-  opacity: 0.7;
+  /*opacity: 0.7;*/
 }
 
 .container_hot {

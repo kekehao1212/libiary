@@ -12,7 +12,7 @@ Page({
     usr_name: '',
     usr_phonenumber: "",
     usr_id: '',
-    book: [{ "title": "霍比特人", id: "199", isbn: "9787121276576" }, { "title": "你自以为是的极限，只是别人的起点", id: "400", isbn: "9787121276576" }],
+    book: [{ "title": "霍比特人", id: "199", isbn: "9787121276576" }, { "title": "我脑袋里的怪东西", id: "200", isbn: "9787208135505" }],
     show_svg: false,
     png_src: null
   },
@@ -129,10 +129,19 @@ Page({
         })
       });
 
-      me.on('borrow error', () => {
+      me.on('error', () => {
+        console.log("fuck")
         // 出错了，可能是不让借太多书
         // 二维码没收到，不画。
-
+        wx.showModal({
+          title: '抱歉您当前借阅达上限，请先将借阅的书归还',
+          content: '借书已达上限',
+          showCancel:false,
+          success:function(res){
+            if(res.confirm)
+              return
+          }
+        })
         app.me.disconnect();
         app.me = undefined;
       });
@@ -156,6 +165,7 @@ Page({
       })
 
       me.on('error', () => {
+        console.log("fuck1")
         app.me.disconnect();
         app.me = undefined;
         // 出错了，提示

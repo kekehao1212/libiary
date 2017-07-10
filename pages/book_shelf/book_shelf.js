@@ -189,23 +189,24 @@ Page({
 
 
       if (this.data.wrong_index == true) {
-
         var that = this
         wx.showModal({
           content: `借书栏中存在馆藏为0的书籍，暂时无法预定，将开启有书通知`,
           showCancel: false,
           success: function (res) {
             if (res.confirm) {
-              that.setData({
-                "wrong_index": false
-              })
               that.navito_sub(order,title)
             }
           }
         })
       }
-
-      that.navito_sub(order, title)
+      else if(this.data.wrong_index == false) {
+        that.navito_sub(order, title)
+      }
+        
+      that.setData({
+          "wrong_index": false
+        })
     }
     else
       this.can_del()

@@ -3,6 +3,7 @@
 <view class="shadow_line"></view>
 <form bindsubmit="formSubmit">
   <view class="container">
+  <view class="register_container"><view class="register">用户注册</view></view>
     <view class="underline">
       <label for="phone_input">手机号码</label>
       <input placeholder="请输入手机号" id="phone_input" class="mobile_input" name="phonenumber" bindinput="input" value="{{phonenumber}}" />
