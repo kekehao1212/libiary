@@ -11,7 +11,7 @@
     </view>
     <view class="underline">
       <label for="code_input">验证码</label>
-      <input placeholder="请输入验证码" id="code_input" class="mobile_input" name="code" bindinput="input" />
+      <input placeholder="默认1234" id="code_input" class="mobile_input" name="code" bindinput="input" />
     </view>
     <view class="wrong" wx:if="{{show_wrong}}">
       <image src="../../source/wrong.png" class="icon" />请输入正确的手机号和验证码</view>

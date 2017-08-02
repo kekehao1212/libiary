@@ -137,6 +137,8 @@
 .settle_text {
   align-self: center;
   margin: 10rpx;
+  -webkit-tap-highlight-color:transparent;
+
 }
 
 .del {

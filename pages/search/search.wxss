@@ -34,7 +34,7 @@
   height: 50rpx;
   width: 50rpx;
   left: 0rpx;
-  bottom: 10rpx;
+  bottom: 15rpx;
   padding: 20rpx;
 }
 

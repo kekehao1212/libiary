@@ -1,10 +1,11 @@
 <view class="avatar">
-  <view class="image_container" style="left:{{left}}px; top:{{top}}px" catchtouchmove="move" catchtouchend="end" catchtouchstart="start">
-    <image src="{{userInfo.avatarUrl}}" class="ava_image" catchtouchmove="move" catchtouchend="end" catchtouchstart="start"></image>
-    <!--<block wx:for="{{image}}">
-  <image src="{{userInfo.avatarUrl}}" hidden="{{!show_other}}" class="ava_image_op" style="left:{{item.left}}px; top:{{item.top}}px"></image>
-  </block>-->
+  <view class="image_container"  hidden="{{userInfo === null?true:false}}" style="left:{{left}}px; top:{{top}}px" catchtouchmove="move" catchtouchend="end" catchtouchstart="start">
+      <image src="{{userInfo.avatarUrl}}" class="ava_image" catchtouchmove="move" catchtouchend="end" catchtouchstart="start"></image>  
   </view>
+   <button  hidden="{{userInfo === null?false:true}}" open-type="getUserInfo" bindgetuserinfo="userInfoHandler"class="btn">
+        <image src="../../source/wxlogin.png" class="btnImage"></image> 
+       微信登录
+  </button> 
 </view>
 <view class="option_container">
   <navigator class="option" url="../favor/favor">

@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   height: 300rpx;
-  position:relative;
+  position: relative;
 }
 
 .ava_image {
@@ -16,10 +16,12 @@
   height: 80px;
   border-radius: 80px;
 }
-.image_container{
+
+.image_container {
   position: relative;
 }
-.ava_image_op{
+
+.ava_image_op {
   width: 80px;
   height: 80px;
   border-radius: 80px;
@@ -39,11 +41,13 @@
   /*background: #dfebb7;*/
   background: #e7e7e7;
 }
-.text{
-  float:right;
-  font-size:16px;
-  color:#616161;
+
+.text {
+  float: right;
+  font-size: 16px;
+  color: #616161;
 }
+
 .option {
   padding-top: 30rpx;
   padding-bottom: 30rpx;
@@ -54,8 +58,7 @@
   width: 40rpx;
   height: 40rpx;
   margin-right: 20rpx;
-  vertical-align:bottom;
-
+  vertical-align: bottom;
 }
 
 .option_text {
@@ -68,4 +71,23 @@
   vertical-align: text-top;
   float: right;
   margin-right: 30rpx;
+}
+
+.btn {
+  margin: 0;
+  padding: 0;
+  width: 130px;
+  height: 60px;
+  overflow: visible;
+  border: 0;
+  line-height: 60px;
+  color: #616161;
+}
+
+.btnImage {
+  width: 40px;
+  height: 40px;
+  vertical-align: top;
+  position: relative;
+  top: 10px;
 }

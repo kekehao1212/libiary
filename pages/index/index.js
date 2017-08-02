@@ -7,7 +7,6 @@ Page({
     popul_book:null,
     recom_book: null
   },
-  url: 'http://123.206.84.238:3000/w/login',
 
   register : function(){
     wx.navigateTo({
@@ -60,6 +59,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log(app)
     var that = this
     // 在index页面进行登录步骤但并获取用户信息
 
@@ -77,6 +77,7 @@ Page({
         WX_SESSION_ID:app.sessionId
       },
       success:function(res){
+        console.log(res)
         that.setData({
           popul_book:res.data.books
         })

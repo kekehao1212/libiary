@@ -121,7 +121,7 @@ Page({
 
     var me = app.me;
     me.on('connect', () => {
-
+      console.log("con")
       me.on('borrow qr', (data) => {
         that.setData({
           png_src: data.qr,

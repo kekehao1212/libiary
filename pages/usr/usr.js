@@ -3,7 +3,7 @@ var app = getApp()
 Page({
 
   data: {
-    userInfo: {},
+    userInfo: 1,
     left: 0,
     top: 0,
     image: [{
@@ -17,10 +17,10 @@ Page({
     }],
     show_other: true,
     id_con: '已认证',
-    phone_con:'已绑定',
-    usr_name:null,
-    usr_id:null,
-    usr_phone:null
+    phone_con: '已绑定',
+    usr_name: null,
+    usr_id: null,
+    usr_phone: null
   },
   touch_start_x: null,
   touch_start_y: null,
@@ -29,28 +29,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   start: function (e) {
+    if (this.data.userInfo.avatarUrl === "../../source/wxlogin.png"){
+      this.userInfoHandler()
+      return
+    }
     this.touch_start_x = e.changedTouches[0].clientX
     this.touch_start_y = e.changedTouches[0].clientY
   },
   onShow: function (options) {
     var that = this
-    wx.login({
-      success: function (res) {
-        wx.getUserInfo({
-          success: function (res) {
-            that.setData({
-              userInfo: res.userInfo
-            })
-          }
-        })
-      }
-    })
+
+
     this.setData({
       usr_name: app.usr_phone_id.name,
       usr_phone: app.usr_phone_id.phoneNumber,
       usr_id: app.usr_phone_id.RICN
     })
-            
+
     if (this.data.usr_id == null) {
       that.setData({
         id_con: '未认证'
@@ -61,6 +56,21 @@ Page({
         phone_con: '未绑定'
       })
     }
+  },
+  onLoad:function(){
+    wx.getUserInfo({
+      success: (res)=> {
+        console.log(res)
+          this.setData({
+            userInfo: res.userInfo
+          })
+      },
+      fail:(res)=>{
+        this.setData({
+          userInfo: null
+        })
+      }
+    })
   },
   move: function (e) {
     this.setData({
@@ -76,9 +86,10 @@ Page({
     this.touch_start_x = 0
     this.touch_start_y = 0
   },
-  favor: function () {
-    wx.navigateTo({
-      url: '../favor/favor',
+  userInfoHandler:function(res){
+    console.log(res)
+    this.setData({
+      userInfo: res.detail.userInfo
     })
   },
   /**

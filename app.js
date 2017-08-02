@@ -82,8 +82,8 @@ App({
   },
 
 
-  url: 'http://123.206.84.238:3000/w/',
-  socket_url: 'ws://123.206.84.238:4450',
+  url: 'https://neet-g.xyz/w/',
+  socket_url: 'wss://neet-g.xyz',
   history: [],
   book_ishelf: [],
   order_book:[],
